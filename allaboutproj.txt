@@ -1,0 +1,11 @@
+Anime Search App - приложение для поиска информации об аниме и манге.
+
+Front - React.js
+
+API - https://docs.api.jikan.moe/#section/Information
+
+Design - https://www.figma.com/file/Uw58rYWDpUS3GHUkehuyd5/Anime-DB-(Community)?type=design&node-id=0-1&mode=design&t=kElP5rsGFx9TEODG-0
+
+
+Features: 
+    - Поиск аниме и манги, информация

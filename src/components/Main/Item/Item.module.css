@@ -1,0 +1,14 @@
+.item {
+    box-sizing: border-box;
+    border-radius: 11px;
+    width: 200px;
+    height: 312px;
+}
+.item:hover {
+    border: 4px solid rgb(23, 184, 144);
+}
+.image {
+    width: 193px;
+    height: 305px;
+    border-radius: 8px;
+}

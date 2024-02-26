@@ -1,0 +1,102 @@
+.Header {
+
+}
+.container {
+    max-width: 900px;
+    padding: 0px 10px;
+    margin: 0px auto;
+    padding: 21px 0px 30px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.logo {
+    color: rgb(253, 255, 252);
+    font-family: Sen;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 55px;
+
+}
+.input__input {
+    width: 748px;
+    height: 67px;
+    border-radius: 10px;
+    border: none;
+    background: rgb(38, 42, 47);
+    padding-left: 21px;
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    outline: none;
+}
+.choose {
+    display: flex;
+    gap: 14px;
+}
+.option {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    
+    font-weight: 600;
+    line-height: 29px;
+    text-decoration: none;
+}
+.optionAnime {
+    text-decoration: underline;
+    font-size: 24px;
+}
+.optionManga {
+    font-size: 24px;
+    text-decoration: underline;
+}
+.option:active {
+    text-decoration: underline;
+}
+
+
+
+
+
+@media (max-width: 840px) {
+    .container {
+        max-width: 700px;
+    }
+    .input__input {
+        width: 650px;
+    }
+}
+@media (max-width: 700px) {
+    .container {
+        max-width: 550px;
+    }
+    .input__input {
+        width: 450px;
+    }
+}
+@media (max-width: 550px) {
+    .container {
+        max-width: 360px;
+    }
+    .input__input {
+        width: 350px;
+    }
+    .logo {
+        font-size: 38px;
+    }
+}
+@media (max-width: 380px) {
+    .container {
+        max-width: none;
+    }
+    .input__input {
+        width: 250px;
+        font-size: 20px;
+    }
+    .logo {
+        font-size: 35px;
+    }
+}

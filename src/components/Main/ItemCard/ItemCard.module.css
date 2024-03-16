@@ -1,8 +1,9 @@
 .ItemCard {
     position: fixed;
     top: 20%;
-    right: 0%;
+    right: 1%;
     width: 400px;
+    max-height: 600px;
     background-color: rgb(26, 38, 57);
     padding: 10px;
     padding-bottom: 20px;
@@ -10,9 +11,12 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 15px;
+    overflow: auto;
 }
 
 .image {
+    width: 305px;
+    height: 425px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -21,20 +25,30 @@
     font-weight: 600;
     line-height: 36px;
 }
-.genre {
+.genres {
     color: rgb(113, 117, 122);
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
     margin-bottom: 10px;
+    display: flex;
+    gap: 6px;
+}
+.genrePoint {
+    color: aliceblue;
+}
+.genre {
+
+}
+.genre:last-child .genrePoint{
+    display: none;
+
 }
 .synopsys {
     margin-bottom: 20px;
 }
 .moreInfo {
     cursor: pointer;
-}
-.moreInfo:hover {
     color: rgb(23, 184, 144);
 }
 .closeButtonIcon {

@@ -4,6 +4,7 @@
     width: 200px;
     height: 312px;
     cursor: pointer;
+    /* border: 1px solid grey;/ */
 }
 .item:hover {
     border: 4px solid rgb(23, 184, 144);

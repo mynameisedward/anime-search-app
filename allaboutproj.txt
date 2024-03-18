@@ -9,3 +9,11 @@ Design - https://www.figma.com/file/Uw58rYWDpUS3GHUkehuyd5/Anime-DB-(Community)?
 
 Features: 
     - Поиск аниме и манги, информация
+
+
+Задачи:
+    • preloader при загрузке контента
+    • анимировать скролл
+    • переключатель между аниме и мангой(+сделать навигацию Url)
+    • поиск аниме и манги. Search
+    

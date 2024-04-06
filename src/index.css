@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:regular,500,600&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Sen:800&display=swap);
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -54,8 +55,24 @@ button {
 
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Inter;
   font-weight: regular;
   background: rgb(20, 25, 31);
   color: rgb(253, 255, 252);
+}
+
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+	width: 13px;
+}
+::-webkit-scrollbar-track {
+	background: rgb(24, 29, 34);
+}
+::-webkit-scrollbar-thumb {
+	background: rgb(23, 184, 144);
+	border-radius: 8px;
+	border: 2px solid rgb(24, 29, 34);
 }

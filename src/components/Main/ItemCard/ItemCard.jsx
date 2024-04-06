@@ -5,39 +5,30 @@ import closeButton from './closeButtonIcon.svg'
 import Preloader from '../../Preloader/Preloader'
 
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
+
+
 const ItemCard = (props) => {
 
-
-
-
     return (
-        <>
 
-        
+        <div className={s.ItemCard}>
 
-        {
-            <div className={s.ItemCard}>
-                {props.loading ? 
-                    <Preloader />
-                    :
-                    <>
-                        <img src={props.imageUrl} alt="" className={s.image} />
-                        <h2 className={s.title}>{props.title}</h2>
-                        <h2 className={s.genres}>
-                            {props.genres.map(genre => <span className={s.genre} key={genre.mal_id}>
-                                <span className={s.genreName}>{genre.name}</span>
-                                <span className={s.genrePoint}>,</span>
-                            </span>)}</h2>
-                        <p className={s.synopsys}>{props.synopsis}</p>
-                        <span className={s.moreInfo}>More Info...</span>
-                        <button className={s.closeButton} >
-                            <img src={closeButton} onClick={() => props.setCardOpen(false)} alt="" className={s.closeButtonIcon} />
-                        </button>
-                    </>
-                }
-            </div>
-        }
-        </>
+            <img src={props.imageUrl} alt="" className={s.image} />
+            <h2 className={s.title}>{props.title}</h2>
+            <h2 className={s.genres}>
+                {props.genres.map(genre => <span className={s.genre} key={genre.mal_id}>
+                    <span className={s.genreName}>{genre.name}</span>
+                    <span className={s.genrePoint}>,</span>
+                </span>)}</h2>
+            <p className={s.synopsys}>{props.synopsis}</p>
+            <span className={s.moreInfo}>More Info...</span>
+            <button className={s.closeButton} >
+                <img src={closeButton} onClick={() => props.setCardOpen(false)} alt="" className={s.closeButtonIcon} />
+            </button>
+
+        </div>
     )
 }
 

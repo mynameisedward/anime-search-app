@@ -32,7 +32,7 @@ const Main = () => {
         fetchData();
         setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
             setLoading(false)
-        }, 4000)
+        }, 1000)
     }, []);
 
 
@@ -58,6 +58,8 @@ const Main = () => {
         setItem(itemInfo)
         
         setLoadingInsideCard(false)
+
+        setItem(itemInfo)
     }
 
     let setCardOpen = (value) => { // Пробрасывание состояние вниз и вверх по компонентам

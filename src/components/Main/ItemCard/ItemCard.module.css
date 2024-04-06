@@ -1,3 +1,19 @@
+
+
+.customScrollbar {
+    width: 300px; /* Ширина контейнера */
+    height: 400px; /* Высота контейнера */
+    overflow-y: scroll; /* Включение вертикального скроллбара */
+  }
+  
+  .customScrollbar::-webkit-scrollbar {
+    width: 10px; /* Ширина скроллбара */
+  }
+  
+  .customScrollbar::-webkit-scrollbar-thumb {
+    background-color: #f40707; /* Цвет ползунка скроллбара */
+  }
+
 .ItemCard {
     position: fixed;
     top: 20%;

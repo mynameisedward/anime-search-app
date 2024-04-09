@@ -1,13 +1,11 @@
 import "./App.css";
+import React, { useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Context from './Context'
-import React, { useState } from "react";
-import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+
 
 
 function App() {
@@ -19,22 +17,16 @@ function App() {
     };
     
     
-    const router = createBrowserRouter([
-        {
-          path: "/",
-          element: <App />,
-        },
-      ]);
 
     return (
 
         <div className="App">
             <Context.Provider value={{contextContentValue, updateContextContentValue}}>
-                <RouterProvider router={router} >
+                <BrowserRouter>
                     <Header />
                     <Main />
                     <Footer />  
-                </RouterProvider>
+                </BrowserRouter>
             </Context.Provider>
         </div>
     );

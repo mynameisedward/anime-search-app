@@ -48,17 +48,23 @@
 .optionAnime {
     text-decoration: underline;
     font-size: 24px;
+    color: #fff;
 }
 .optionManga {
     font-size: 24px;
     text-decoration: underline;
+    color: #fff;
 }
 .option:active {
     text-decoration: underline;
+    color: #fff;
 }
 
 
-
+a {
+    text-decoration: none;
+    color: #fff;
+}
 
 
 @media (max-width: 840px) {

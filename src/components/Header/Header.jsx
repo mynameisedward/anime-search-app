@@ -1,12 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import s from './Header.module.css'
-import Context from '../../Context'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Header = () => {
 
 
-    const {contextContentValue, updateContextContentValue} = useContext(Context)
+    const location = useLocation()
+    const [activeLink, setActiveLink] = useState('')
+
+    useEffect(() => {
+        const currentUrl = location.pathname;
+        if (currentUrl === '/anime') {
+            setActiveLink('anime');
+        } else if (currentUrl === '/manga') {
+            setActiveLink('manga');
+        }
+    }, [location]);
+
+
+    window.curUrl = location.pathname
+
+    // const {contextContentValue, updateContextContentValue} = useContext(Context)
 
 
     return (
@@ -18,11 +32,11 @@ const Header = () => {
                 </div>
                 <div className={s.choose}>
                     <Link to={'/anime'}>
-                        <span className={contextContentValue == 'anime' ? s.optionAnime : s.option} onClick={() => updateContextContentValue('anime')}>Anime</span>
+                        <span className={activeLink == 'anime' ? s.optionAnime : s.option}>Anime</span>
                     </Link>
                     <span className={s.option}>/</span>
                     <Link to={'/manga'}>
-                        <span className={contextContentValue == 'manga' ? s.optionManga : s.option} onClick={() => updateContextContentValue('manga')}>Manga</span>
+                        <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>
             </div>

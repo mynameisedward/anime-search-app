@@ -11,6 +11,8 @@ import 'simplebar-react/dist/simplebar.min.css';
 
 const ItemCard = (props) => {
 
+
+    
     return (
 
         <div className={s.ItemCard}>

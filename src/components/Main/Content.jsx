@@ -5,11 +5,13 @@ import ItemCard from './ItemCard/ItemCard'
 import axios from 'axios'
 import Preloader from '../Preloader/Preloader'
 import Context from '../../Context'
-import { Link, Routes, Route } from 'react-router-dom'
+import { Link, Routes, Route, useSearchParams } from 'react-router-dom'
 
 
 const Content = (props) => {
 
+    const [searchParams] = useSearchParams()
+    const search = searchParams.get('search')
 
 
     const [items, setItems] = useState([])
@@ -25,13 +27,25 @@ const Content = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             if(props.content == 'anime') {
-                setLoading(true)
-                let response = await axios.get('https://api.jikan.moe/v4/top/anime');
-                setItems(response.data.data);
+                if(search) {
+                    setLoading(true)
+                    let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=g`);
+                    setItems(response.data.data);
+                } else {
+                    setLoading(true)
+                    let response = await axios.get('https://api.jikan.moe/v4/top/anime?rating=g');
+                    setItems(response.data.data);
+                }
             } else if(props.content == 'manga') {
-                setLoading(true)
-                let response = await axios.get('https://api.jikan.moe/v4/top/manga');
-                setItems(response.data.data);
+                if(search) {
+                    setLoading(true)
+                    let response = await axios.get(`https://api.jikan.moe/v4/manga?q=${search}&sfw=true`);
+                    setItems(response.data.data);
+                } else {
+                    setLoading(true)
+                    let response = await axios.get('https://api.jikan.moe/v4/top/manga');
+                    setItems(response.data.data);
+                }
             }
         };
 
@@ -39,9 +53,10 @@ const Content = (props) => {
         setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
             setLoading(false)
         }, 3000)
-    }, [props.content]);
+    }, [props.content, search]);
 
 
+    window.searchParam = search
 
     let clickItem = (imageUrl, title, genres, synopsis) => { // обработчик для клика на айтем
         setLoadingInsideCard(true)
@@ -66,18 +81,24 @@ const Content = (props) => {
     let setCardOpen = (value) => { // Пробрасывание состояние вниз и вверх по компонентам
         setIsCardOpen(value)
     }
-
+    let getTitle = () => {
+        if(search) {
+            return `Search for: ${search}`
+        } else {
+            return `Trending ${props.content == 'anime' ? 'anime' : 'manga'}`
+        }
+    }
 
     // Сейчас у нас при клике на картинку открывается карточка и картинка(большая) в карточке медленно загружается,
     // Скорее всего будем делать Preloader на картинку
     // Сделаем второй Preloader и второе состояние
     // Надо решать как быть с пробрасыванием состояние loadingInsideCard внутрь компонента ItemCard
 
-
+    // {props.content == 'anime' ? 'anime' : 'manga'}
     return (
         <>
             <div className={s.container}>
-                <h2 className={s.title}>Trending {props.content == 'anime' ? 'anime' : 'manga'} yo</h2>
+                <h2 className={s.title}>{getTitle()}</h2>
                 {loading ?
                     <Preloader />
                     :

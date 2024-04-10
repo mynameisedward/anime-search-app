@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import s from './Header.module.css'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Header = () => {
 
+    const [inputValue, setInputValue] = useState('')
+    const navigate = useNavigate()
 
     const location = useLocation()
     const [activeLink, setActiveLink] = useState('')
@@ -18,6 +20,14 @@ const Header = () => {
     }, [location]);
 
 
+    const handleInput = (e) => {
+        if(e.key === 'Enter') {
+            navigate(`?search=${inputValue}`)
+            console.log(inputValue)
+            setInputValue('')
+        }
+    }
+
     window.curUrl = location.pathname
 
     // const {contextContentValue, updateContextContentValue} = useContext(Context)
@@ -26,9 +36,12 @@ const Header = () => {
     return (
         <div className={s.Header}>
             <div className={s.container}>
-                <h1 className={s.logo}>Anime Search App</h1>
+                <Link to={'/anime'}>
+                    <h1 className={s.logo}>Anime Search App</h1>
+                </Link>
                 <div className={s.input}>
-                    <input type="text" className={s.input__input} placeholder='What are you looking for?' />
+                    <input type="text" className={s.input__input} placeholder='What are you looking for?' 
+                        value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={handleInput}/>
                 </div>
                 <div className={s.choose}>
                     <Link to={'/anime'}>

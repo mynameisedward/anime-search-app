@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import s from './Main.module.css'
+import s from './Main.module.css' // Для стилей заголовка при url /
 import Item from './Item/Item'
 import ItemCard from './ItemCard/ItemCard'
 import axios from 'axios'
 import Preloader from '../Preloader/Preloader'
 import Context from '../../Context'
 import Content from './Content'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'  
 
 
 const Main = () => {
@@ -16,14 +16,18 @@ const Main = () => {
 
 
     return (
-        <div className={s.Main}>
+        <main className={s.Main}>
 
-            <Routes> 
+            <Routes>
+                <Route path='/' element={
+                    <div className={s.container}>
+                        <h1 className={s.title}>Выберите аниме или мангу!</h1>
+                    </div>
+                }/> 
                 <Route path='/anime' element={<Content content='anime'/>}/>    
                 <Route path='/manga' element={<Content content='manga'/>}/>
-                
             </Routes>
-        </div>
+        </main>
     )
 }
 

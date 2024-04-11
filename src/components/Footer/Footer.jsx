@@ -5,7 +5,7 @@ import githubIcon from '../../assets/GitHub.png'
 
 const Footer = () => {
   return (
-    <div className={s.Footer}>
+    <footer className={s.Footer}>
         <div className={s.container}>
             <div className={s.contact}>
                 <h3 className={s.firstWord}>Created by:</h3>
@@ -33,7 +33,7 @@ const Footer = () => {
                 </h3>
             </div>
         </div>
-    </div>
+    </footer>
   )
 }
 

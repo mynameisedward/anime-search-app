@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import s from './Header.module.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import chooseArrow from '../../assets/chooseArrow.png'
+
 
 const Header = () => {
 
@@ -34,7 +36,7 @@ const Header = () => {
 
 
     return (
-        <div className={s.Header}>
+        <header className={s.Header}>
             <div className={s.container}>
                 <Link to={'/anime'}>
                     <h1 className={s.logo}>Anime Search App</h1>
@@ -52,8 +54,10 @@ const Header = () => {
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>
+                {activeLink == '' && <img src={chooseArrow} alt="" className={s.arrow} />} 
+
             </div>
-        </div>
+        </header>
     )
 }
 

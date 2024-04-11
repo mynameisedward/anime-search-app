@@ -29,11 +29,11 @@ const Content = (props) => {
             if(props.content == 'anime') {
                 if(search) {
                     setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=g`);
+                    let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=pg13`);
                     setItems(response.data.data);
                 } else {
                     setLoading(true)
-                    let response = await axios.get('https://api.jikan.moe/v4/top/anime?rating=g');
+                    let response = await axios.get('https://api.jikan.moe/v4/top/anime?rating=pg13');
                     setItems(response.data.data);
                 }
             } else if(props.content == 'manga') {
@@ -94,7 +94,6 @@ const Content = (props) => {
     // Сделаем второй Preloader и второе состояние
     // Надо решать как быть с пробрасыванием состояние loadingInsideCard внутрь компонента ItemCard
 
-    // {props.content == 'anime' ? 'anime' : 'manga'}
     return (
         <>
             <div className={s.container}>

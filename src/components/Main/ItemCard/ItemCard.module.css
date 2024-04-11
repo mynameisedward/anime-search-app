@@ -48,7 +48,9 @@
     line-height: 22px;
     margin-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
+    max-width: 350px;
 }
 .genrePoint {
     color: aliceblue;

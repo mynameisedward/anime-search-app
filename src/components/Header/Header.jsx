@@ -14,9 +14,9 @@ const Header = () => {
 
     useEffect(() => {
         const currentUrl = location.pathname;
-        if (currentUrl === '/anime') {
+        if(currentUrl.includes('anime')) {
             setActiveLink('anime');
-        } else if (currentUrl === '/manga') {
+        } else if(currentUrl.includes('manga')) {
             setActiveLink('manga');
         }
     }, [location]);
@@ -29,6 +29,7 @@ const Header = () => {
             setInputValue('')
         }
     }
+
 
     window.curUrl = location.pathname
 
@@ -54,7 +55,7 @@ const Header = () => {
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>
-                {activeLink == '' && <img src={chooseArrow} alt="" className={s.arrow} />} 
+                {activeLink == '' && <img src={chooseArrow} alt="Choose anime or manga" className={s.arrow} />} 
 
             </div>
         </header>

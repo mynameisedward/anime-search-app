@@ -1,0 +1,55 @@
+.container {
+    max-width: 1300px;
+    margin: 0px auto;
+    padding: 0px 20px;
+}
+
+.animeImage {
+    border-radius: 15px;
+}
+.firstRow {
+    display: flex;
+    gap: 30px;
+}
+.animeEnglishTitle {
+    font-size: 52px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.animeJapaneseTitle {
+    color: #9CA8B1;
+    font-size: 22px;
+    font-weight: 500;
+}
+.animeInfoList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+.animeInfoItem {
+    color: #9CA8B1;
+    font-size: 22px;
+}
+.animeInfoItem span {
+    color: white;
+}
+.synopsisDiv {
+    margin-top: 20px;
+}
+.synopsisTitle {
+    font-weight: 600;
+    color: white;
+    font-size: 44px;
+    margin-bottom: 8px;
+}
+.synopsisText {
+    font-size: 22px;
+    color: #9CA8B1;
+}
+@media (max-width: 800px) {
+    .firstRow {
+        flex-direction: column;
+        align-items: center;
+    }
+}

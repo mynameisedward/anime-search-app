@@ -58,7 +58,7 @@ const Content = (props) => {
 
     window.searchParam = search
 
-    let clickItem = (imageUrl, title, genres, synopsis) => { // обработчик для клика на айтем
+    let clickItem = (imageUrl, title, genres, synopsis, id) => { // обработчик для клика на айтем
         setLoadingInsideCard(true)
         setCardOpen(true)
 
@@ -69,7 +69,8 @@ const Content = (props) => {
             title,
             genres,
             synopsis,
-            loadingInsideCard
+            loadingInsideCard,
+            id,
         }
         setItem(itemInfo)
 
@@ -102,18 +103,15 @@ const Content = (props) => {
                     <Preloader />
                     :
                     <div className={s.items}>
-                        {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis)}>
-                            {/* <Link to={`${item.mal_id}`}> */}
-                                <Item imageUrl={item.images.webp.image_url} />
-                            {/* </Link> */}
-
+                        {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
+                            <Item imageUrl={item.images.webp.image_url} />
                         </div>)}
                     </div>
                 }
 
             </div>
                 
-                {isCardOpen && <ItemCard loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
+                {isCardOpen && <ItemCard id={item.id} loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
                     genres={item.genres} synopsis={item.synopsis} />}
         </>
     )

@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import s from './ItemCard.module.css'
-import NarutoImg from './NarutoImg.jpg'
 import closeButton from './closeButtonIcon.svg'
+import { Link } from 'react-router-dom'
 import Preloader from '../../Preloader/Preloader'
-
-
-import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
 
 
 const ItemCard = (props) => {
@@ -25,7 +21,9 @@ const ItemCard = (props) => {
                     <span className={s.genrePoint}>,</span>
                 </span>)}</h2>
             <p className={s.synopsys}>{props.synopsis}</p>
-            <span className={s.moreInfo}>More Info...</span>
+            <Link to={`${props.id}`}>
+                <span className={s.moreInfo}>More Info...</span>
+            </Link>
             <button className={s.closeButton} >
                 <img src={closeButton} onClick={() => props.setCardOpen(false)} alt="" className={s.closeButtonIcon} />
             </button>

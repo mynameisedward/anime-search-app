@@ -7,6 +7,7 @@ import Preloader from '../Preloader/Preloader'
 import Context from '../../Context'
 import Content from './Content'
 import {Routes, Route} from 'react-router-dom'  
+import ItemPage from '../ItemPage/ItemPage'
 
 
 const Main = () => {
@@ -25,7 +26,10 @@ const Main = () => {
                     </div>
                 }/> 
                 <Route path='/anime' element={<Content content='anime'/>}/>    
+                <Route path='/anime/:id' element={<ItemPage/>}/>    
                 <Route path='/manga' element={<Content content='manga'/>}/>
+                <Route path='/manga/:id' element={<ItemPage/>}/>
+
             </Routes>
         </main>
     )

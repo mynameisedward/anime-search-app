@@ -6,6 +6,7 @@ import axios from 'axios'
 import Preloader from '../Preloader/Preloader'
 import Context from '../../Context'
 import { Link, Routes, Route, useSearchParams } from 'react-router-dom'
+import Paginator from '../Paginator/Paginator'
 
 
 const Content = (props) => {
@@ -19,9 +20,14 @@ const Content = (props) => {
     const [item, setItem] = useState({})
     const [loading, setLoading] = useState(true) // Глобальный loading для всей страницы
     const [loadingInsideCard, setLoadingInsideCard] = useState(false) // Loading для карточки
+    const [paginationData, setPaginationData] = useState({})
 
     const {contextContentValue, updateContextContentValue} = useContext(Context) // Значение контекста(Аниме или Манга)
 
+
+
+
+    window.pagination = paginationData
 
 
     useEffect(() => {
@@ -29,22 +35,26 @@ const Content = (props) => {
             if(props.content == 'anime') {
                 if(search) {
                     setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=pg13`);
+                    let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=pg13&$page=${paginationData.current_page == undefined ? 1 : paginationData.current_page}`);
                     setItems(response.data.data);
+                    setPaginationData(response.data.pagination)
                 } else {
                     setLoading(true)
-                    let response = await axios.get('https://api.jikan.moe/v4/top/anime?rating=pg13');
+                    let response = await axios.get(`https://api.jikan.moe/v4/top/anime?rating=pg13&page=${paginationData.current_page == undefined ? 1 : paginationData.current_page}`);
                     setItems(response.data.data);
+                    setPaginationData(response.data.pagination)
                 }
             } else if(props.content == 'manga') {
                 if(search) {
                     setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/manga?q=${search}&sfw=true`);
+                    let response = await axios.get(`https://api.jikan.moe/v4/manga?q=${search}&sfw=true&page=${paginationData.current_page == undefined ? 1 : paginationData.current_page}`);
                     setItems(response.data.data);
+                    setPaginationData(response.data.pagination)
                 } else {
                     setLoading(true)
-                    let response = await axios.get('https://api.jikan.moe/v4/top/manga');
+                    let response = await axios.get(`https://api.jikan.moe/v4/top/manga?page=${paginationData.current_page == undefined ? 1 : paginationData.current_page}`);
                     setItems(response.data.data);
+                    setPaginationData(response.data.pagination)
                 }
             }
         };
@@ -53,10 +63,16 @@ const Content = (props) => {
         setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
             setLoading(false)
         }, 3000)
-    }, [props.content, search]);
+    }, [props.content, search, paginationData.current_page]);
 
 
     window.searchParam = search
+
+
+    let changePage = (number) => {
+        setPaginationData({...paginationData, current_page: number})
+        console.log(number)
+    }
 
     let clickItem = (imageUrl, title, genres, synopsis, id) => { // обработчик для клика на айтем
         setLoadingInsideCard(true)
@@ -109,8 +125,8 @@ const Content = (props) => {
                     </div>
                 }
 
+                <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
             </div>
-                
                 {isCardOpen && <ItemCard id={item.id} loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
                     genres={item.genres} synopsis={item.synopsis} />}
         </>

@@ -69,7 +69,7 @@ const ItemPage = () => {
                                             <li className={s.animeInfoItem}>Episodes: <span>{item.episodes}</span></li>
                                             <li className={s.animeInfoItem}>Source: <span>{item.source}</span></li>
                                             <li className={s.animeInfoItem}>Rating: <span>{item.rating}</span></li>
-                                            <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span className={s.genreName}>{genre.name}</span>)}</span></li>
+                                            <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span key={genre.mal_id} className={s.genreName}>{genre.name}</span>)}</span></li>
                                             <li className={s.animeInfoItem}>Score: <span>{item.score}</span></li>
                                             <li className={s.animeInfoItem}>Year: <span>{item.year}</span></li>
                                             <li className={s.animeInfoItem}>Status: <span>{item.status}</span></li>
@@ -82,7 +82,7 @@ const ItemPage = () => {
                                         <>
                                             { item.chapters && <li className={s.animeInfoItem}>Chapters: <span>{item.chapters}</span></li>  }
                                             <li className={s.animeInfoItem}>Score: <span>{item.score}</span></li>
-                                            <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span className={s.genreName}>{genre.name}</span>)}</span></li>
+                                            <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span key={genre.mal_id} className={s.genreName}>{genre.name}</span>)}</span></li>
                                             <li className={s.animeInfoItem}>Rank: <span>{item.rank}</span></li>
                                             <li className={s.animeInfoItem}>Type: <span>{item.type}</span></li>
                                             <li className={s.animeInfoItem}>Status: <span>{item.status}</span></li>

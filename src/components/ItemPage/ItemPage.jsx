@@ -59,7 +59,7 @@ const ItemPage = () => {
                                 {/* <img src={animeImg} alt="" className={s.animeImage} /> */}
                             </div>
                             <div className={s.animeInfo}>
-                                <h1 className={s.animeEnglishTitle}>{item.title_english}</h1>
+                                <h1 className={s.animeEnglishTitle}>{item.title}</h1>
                                 <h2 className={s.animeJapaneseTitle}>{item.title_japanese}</h2>
                                 <ul className={s.animeInfoList}>
                                     {

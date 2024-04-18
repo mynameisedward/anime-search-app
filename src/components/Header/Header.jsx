@@ -12,40 +12,55 @@ const Header = () => {
     const location = useLocation()
     const [activeLink, setActiveLink] = useState('')
 
+    const [inputOpen, setInputOpen] = useState(false)
+
     useEffect(() => {
         const currentUrl = location.pathname;
-        if(currentUrl.includes('anime')) {
-            setActiveLink('anime');
-        } else if(currentUrl.includes('manga')) {
-            setActiveLink('manga');
+        const setLink = () => {
+            if (currentUrl.includes('anime')) {
+                setActiveLink('anime');
+            } else if (currentUrl.includes('manga')) {
+                setActiveLink('manga');
+            }
         }
+        if (location.pathname == '/anime') {
+            setInputOpen(true)
+        } else if(location.pathname == '/manga') {
+            setInputOpen(true)
+        } 
+        else {
+            setInputOpen(false)
+        }
+        setLink()
     }, [location]);
 
 
     const handleInput = (e) => {
-        if(e.key === 'Enter') {
+        if (e.key === 'Enter') {
             navigate(`?search=${inputValue}`)
             console.log(inputValue)
             setInputValue('')
         }
     }
 
-
+    window.loc = location
     window.curUrl = location.pathname
-
-    // const {contextContentValue, updateContextContentValue} = useContext(Context)
+    window.inpuut = inputOpen
 
 
     return (
         <header className={s.Header}>
             <div className={s.container}>
-                <Link to={'/anime'}>
+                <Link to={'/'}>
                     <h1 className={s.logo}>Anime Search App</h1>
                 </Link>
-                <div className={s.input}>
-                    <input type="text" className={s.input__input} placeholder='What are you looking for?' 
-                        value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={handleInput}/>
-                </div>
+                {inputOpen &&
+                    <div className={s.input}>
+                        <input type="text" className={s.input__input} placeholder='What are you looking for?'
+                            value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={handleInput} />
+                    </div>
+                }
+
                 <div className={s.choose}>
                     <Link to={'/anime'}>
                         <span className={activeLink == 'anime' ? s.optionAnime : s.option}>Anime</span>
@@ -55,7 +70,7 @@ const Header = () => {
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>
-                {activeLink == '' && <img src={chooseArrow} alt="Choose anime or manga" className={s.arrow} />} 
+                {activeLink == '' && <img src={chooseArrow} alt="Choose anime or manga" className={s.arrow} />}
 
             </div>
         </header>

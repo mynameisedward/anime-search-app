@@ -11,12 +11,12 @@ import Paginator from '../Paginator/Paginator'
 
 const Content = (props) => {
 
-  
+
     const [searchParams] = useSearchParams()
     const search = searchParams.get('search')
     const location = useLocation()
     const page = searchParams.get('page');
-    
+
 
     const [items, setItems] = useState([])
     const [isCardOpen, setIsCardOpen] = useState(false)
@@ -25,21 +25,21 @@ const Content = (props) => {
     const [loadingInsideCard, setLoadingInsideCard] = useState(false) // Loading для карточки
     const [paginationData, setPaginationData] = useState({})
 
-    const {contextContentValue, updateContextContentValue} = useContext(Context) // Значение контекста(Аниме или Манга)
+    const { contextContentValue, updateContextContentValue } = useContext(Context) // Значение контекста(Аниме или Манга)
 
 
 
     window.page = page
-    window.loc = location 
+    window.loc = location
     window.pagination = paginationData
 
 
     useEffect(() => {
         const fetchData = async () => {
 
-            
-            if(props.content == 'anime') {
-                if(search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
+
+            if (props.content == 'anime') {
+                if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
                     setLoading(true)
                     let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=pg13&page=${page ? page : 1}`);
                     setItems(response.data.data);
@@ -50,8 +50,8 @@ const Content = (props) => {
                     setItems(response.data.data);
                     setPaginationData(response.data.pagination)
                 }
-            } else if(props.content == 'manga') {
-                if(search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
+            } else if (props.content == 'manga') {
+                if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
                     setLoading(true)
                     let response = await axios.get(`https://api.jikan.moe/v4/manga?q=${search}&sfw=true&page=${page ? page : 1}`);
                     setItems(response.data.data);
@@ -76,7 +76,7 @@ const Content = (props) => {
 
 
     let changePage = (number) => {
-        setPaginationData({...paginationData, current_page: number})
+        setPaginationData({ ...paginationData, current_page: number })
         console.log(number)
     }
 
@@ -105,7 +105,7 @@ const Content = (props) => {
         setIsCardOpen(value)
     }
     let getTitle = () => {
-        if(search) {
+        if (search) {
             return `Search for: ${search}`
         } else {
             return `Trending ${props.content == 'anime' ? 'anime' : 'manga'}`
@@ -124,17 +124,20 @@ const Content = (props) => {
                 {loading ?
                     <Preloader />
                     :
-                    <div className={s.items}>
-                        {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
-                            <Item imageUrl={item.images.webp.image_url} />
-                        </div>)}
-                    </div>
+                    <>
+                        <div className={s.items}>
+                            {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
+                                <Item imageUrl={item.images.webp.image_url} />
+                            </div>)}
+                        </div>
+                        <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
+                    </>
+
                 }
 
-                <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
             </div>
-                {isCardOpen && <ItemCard id={item.id} loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
-                    genres={item.genres} synopsis={item.synopsis} />}
+            {isCardOpen && <ItemCard id={item.id} loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
+                genres={item.genres} synopsis={item.synopsis} />}
         </>
     )
 }

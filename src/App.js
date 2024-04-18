@@ -1,4 +1,4 @@
-import "./App.css";
+import s from "./App.css";
 import React, { useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -20,12 +20,14 @@ function App() {
 
     return (
 
-        <div className="App">
+        <div className={s.App}>
             <Context.Provider value={{contextContentValue, updateContextContentValue}}>
                 <BrowserRouter>
+                <div className={s.wrapper}>
                     <Header />
                     <Main />
-                    <Footer />  
+                    <Footer />
+                </div>
                 </BrowserRouter>
             </Context.Provider>
         </div>

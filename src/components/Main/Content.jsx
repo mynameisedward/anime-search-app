@@ -73,7 +73,7 @@ const Content = (props) => {
 
 
     window.searchParam = search
-
+    window.items = items
 
     let changePage = (number) => {
         setPaginationData({ ...paginationData, current_page: number })
@@ -124,13 +124,15 @@ const Content = (props) => {
                 {loading ?
                     <Preloader />
                     :
-                    <>
-                        <div className={s.items}>
-                            {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
-                                <Item imageUrl={item.images.webp.image_url} />
-                            </div>)}
-                        </div>
-                        <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
+                    <>  
+                        {items.length == 0 ? <h1 className={s.notFoundTitle}>NOT FOUND</h1> : 
+                            <div className={s.items}>
+                                {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
+                                    <Item imageUrl={item.images.webp.image_url} />
+                                </div>)}
+                            </div>
+                        }
+                        {items.length !== 0 && <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />}
                     </>
 
                 }

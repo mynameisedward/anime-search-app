@@ -63,3 +63,9 @@
         max-width: 450px;
     }
 }
+
+.notFoundTitle {
+    font-size: 60px;
+    font-weight: 600;
+    margin: 50px auto;
+}

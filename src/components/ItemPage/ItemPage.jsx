@@ -3,7 +3,7 @@ import s from './ItemPage.module.css'
 import { useLocation, useParams } from 'react-router-dom'
 import animeImg from '../../assets/animeImage.webp'
 import axios from 'axios'
-import Preloader from '../Preloader/Preloader'
+import Preloader from '../Preloader/Preloader.tsx'
 
 
 const ItemPage = () => {

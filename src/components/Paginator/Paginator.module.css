@@ -3,6 +3,7 @@
     display: flex;
     /* flex-wrap: wrap; */
     overflow-x: scroll;
+    margin-top: auto;
 }
 .number {
     font-size: 30px;

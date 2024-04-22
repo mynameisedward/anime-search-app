@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import s from './Main.module.css' // Для стилей заголовка при url /
-import Item from './Item/Item'
-import ItemCard from './ItemCard/ItemCard'
+import Item from './Item/Item.tsx'
+import ItemCard from './ItemCard/ItemCard.tsx'
 import axios from 'axios'
-import Preloader from '../Preloader/Preloader'
-import Context from '../../Context'
-import Content from './Content'
+import Preloader from '../Preloader/Preloader.tsx'
+import Context from '../../Context.js'
+import Content from './Content.tsx'
 import {Routes, Route} from 'react-router-dom'  
-import ItemPage from '../ItemPage/ItemPage'
+import ItemPage from '../ItemPage/ItemPage.jsx'
 
 
 const Main = () => {

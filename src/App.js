@@ -1,8 +1,8 @@
 import s from "./App.css";
 import React, { useState } from "react";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer.tsx";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
+import Main from "./components/Main/Main.tsx";
 import Context from './Context'
 import { BrowserRouter } from "react-router-dom";
 

@@ -1,15 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
 import s from './Main.module.css'
-import Item from './Item/Item'
-import ItemCard from './ItemCard/ItemCard'
+import Item from './Item/Item.tsx'
+import ItemCard from './ItemCard/ItemCard.tsx'
 import axios from 'axios'
-import Preloader from '../Preloader/Preloader'
-import Context from '../../Context'
+import Preloader from '../Preloader/Preloader.tsx'
+import Context from '../../Context.js'
 import { Link, Routes, Route, useSearchParams, useLocation, useParams } from 'react-router-dom'
-import Paginator from '../Paginator/Paginator'
+import Paginator from '../Paginator/Paginator.tsx'
 
 
-const Content = (props) => {
+
+export interface ContentProps {
+    content: String,  
+}   
+
+const Content = (props: ContentProps) => {
 
 
     const [searchParams] = useSearchParams()
@@ -132,11 +137,11 @@ const Content = (props) => {
                                 </div>)}
                             </div>
                         }
-                        {items.length !== 0 && <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />}
+                        {/* {items.length !== 0 && <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />} */}
                     </>
 
                 }
-
+                <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
             </div>
             {isCardOpen && <ItemCard id={item.id} loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
                 genres={item.genres} synopsis={item.synopsis} />}

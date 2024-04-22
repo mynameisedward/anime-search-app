@@ -3,7 +3,13 @@ import s from './Paginator.module.css'
 import {Link, useLocation, useParams, useSearchParams} from 'react-router-dom'
 
 
-const Paginator = (props) => {
+export interface PaginatorProps {
+    numberOfPages: number,
+    changePage: (number: number) => void
+}
+
+
+const Paginator = (props: PaginatorProps) => {
 
 
     const location = useLocation()
@@ -21,7 +27,9 @@ const Paginator = (props) => {
 
 
     const getClassNameForNumber = (number) => {
-        if(page == null) page = 1
+        if(page == null) {
+            page = 1
+        }
         if(number == page) {
             return s.activeNumber
         } else {

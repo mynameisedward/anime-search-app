@@ -1,24 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
-import s from './Main.module.css' // Для стилей заголовка при url /
-import Item from './Item/Item.tsx'
-import ItemCard from './ItemCard/ItemCard.tsx'
-import axios from 'axios'
-import Preloader from '../Preloader/Preloader.tsx'
-import Context from '../../Context.js'
-import Content from './Content.tsx'
+import React from 'react'
+import s from './Main.module.css'
+import Content from './Content'
 import {Routes, Route} from 'react-router-dom'  
-import ItemPage from '../ItemPage/ItemPage.jsx'
+import ItemPage from '../ItemPage/ItemPage'
 
 
 const Main = () => {
-
-
-
-
-
     return (
         <main className={s.Main}>
-
             <Routes>
                 <Route path='/' element={
                     <div className={s.container}>
@@ -29,7 +18,6 @@ const Main = () => {
                 <Route path='/anime/:id' element={<ItemPage/>}/>    
                 <Route path='/manga' element={<Content content='manga'/>}/>
                 <Route path='/manga/:id' element={<ItemPage/>}/>
-
             </Routes>
         </main>
     )

@@ -1,18 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react'
 import s from './Main.module.css'
-import Item from './Item/Item.tsx'
-import ItemCard from './ItemCard/ItemCard.tsx'
+import Item from './Item/Item'
+import ItemCard from './ItemCard/ItemCard'
 import axios from 'axios'
-import Preloader from '../Preloader/Preloader.tsx'
-import Context from '../../Context.js'
-import { Link, Routes, Route, useSearchParams, useLocation, useParams } from 'react-router-dom'
-import Paginator from '../Paginator/Paginator.tsx'
+import Preloader from '../Preloader/Preloader'
+import { useSearchParams, useLocation } from 'react-router-dom'
+import Paginator from '../Paginator/Paginator'
+import { Genre } from './ItemCard/ItemCard'
 
 
 
 export interface ContentProps {
-    content: String,  
-}   
+    content: String,
+}
+export type Item = {
+    imageUrl: string;
+    title: string;
+    genres: Genre[];
+    synopsis: string;
+    loadingInsideCard: boolean;
+    id: number;
+}
+
 
 const Content = (props: ContentProps) => {
 
@@ -23,15 +32,12 @@ const Content = (props: ContentProps) => {
     const page = searchParams.get('page');
 
 
-    const [items, setItems] = useState([])
-    const [isCardOpen, setIsCardOpen] = useState(false)
-    const [item, setItem] = useState({})
-    const [loading, setLoading] = useState(true) // Глобальный loading для всей страницы
-    const [loadingInsideCard, setLoadingInsideCard] = useState(false) // Loading для карточки
+    const [items, setItems] = useState<Item[]>([])
+    const [isCardOpen, setIsCardOpen] = useState<boolean>(false)
+    const [item, setItem] = useState<Item>({})
+    const [loading, setLoading] = useState<boolean>(true) // Глобальный loading для всей страницы
+    const [loadingInsideCard, setLoadingInsideCard] = useState<boolean>(false) // Loading для карточки
     const [paginationData, setPaginationData] = useState({})
-
-    const { contextContentValue, updateContextContentValue } = useContext(Context) // Значение контекста(Аниме или Манга)
-
 
 
     window.page = page
@@ -41,8 +47,6 @@ const Content = (props: ContentProps) => {
 
     useEffect(() => {
         const fetchData = async () => {
-
-
             if (props.content == 'anime') {
                 if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
                     setLoading(true)
@@ -82,7 +86,6 @@ const Content = (props: ContentProps) => {
 
     let changePage = (number) => {
         setPaginationData({ ...paginationData, current_page: number })
-        console.log(number)
     }
 
     let clickItem = (imageUrl, title, genres, synopsis, id) => { // обработчик для клика на айтем
@@ -117,11 +120,6 @@ const Content = (props: ContentProps) => {
         }
     }
 
-    // Сейчас у нас при клике на картинку открывается карточка и картинка(большая) в карточке медленно загружается,
-    // Скорее всего будем делать Preloader на картинку
-    // Сделаем второй Preloader и второе состояние
-    // Надо решать как быть с пробрасыванием состояние loadingInsideCard внутрь компонента ItemCard
-
     return (
         <>
             <div className={s.container}>
@@ -129,8 +127,8 @@ const Content = (props: ContentProps) => {
                 {loading ?
                     <Preloader />
                     :
-                    <>  
-                        {items.length == 0 ? <h1 className={s.notFoundTitle}>NOT FOUND</h1> : 
+                    <>
+                        {items.length == 0 ? <h1 className={s.notFoundTitle}>NOT FOUND</h1> :
                             <div className={s.items}>
                                 {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
                                     <Item imageUrl={item.images.webp.image_url} />

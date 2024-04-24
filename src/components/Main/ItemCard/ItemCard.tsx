@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import s from './ItemCard.module.css'
 import closeButton from './closeButtonIcon.svg'
 import { Link } from 'react-router-dom'
-import Preloader from '../../Preloader/Preloader.tsx'
 
 
 
@@ -17,7 +16,6 @@ export interface ItemCardProps {
     synopsis: string,
     id: number,
     setCardOpen: (trueFalse: boolean) => void
-
 }
 
 

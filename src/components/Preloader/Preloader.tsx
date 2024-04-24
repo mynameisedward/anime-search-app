@@ -3,7 +3,7 @@ import s from './Preloader.module.css'
 import PreloaderGif from '../../assets/Preloader.gif'
 
 
-const Preloader = () => {
+const Preloader: React.FC = () => {
     return (
         <div className={s.preloader}>
             <img src={PreloaderGif} alt="" className={s.preloaderGif} />

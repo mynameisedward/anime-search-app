@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import s from './ItemPage.module.css'
 import { useLocation, useParams } from 'react-router-dom'
-import animeImg from '../../assets/animeImage.webp'
 import axios from 'axios'
-import Preloader from '../Preloader/Preloader.tsx'
+import Preloader from '../Preloader/Preloader'
 
 
 const ItemPage = () => {

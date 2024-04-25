@@ -4,15 +4,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import chooseArrow from '../../assets/chooseArrow.png'
 
 
-const Header = () => {
+const Header: React.FC = () => {
 
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState<string>('')
     const navigate = useNavigate()
 
     const location = useLocation()
-    const [activeLink, setActiveLink] = useState('')
+    const [activeLink, setActiveLink] = useState<string>('')
 
-    const [inputOpen, setInputOpen] = useState(false)
+    const [inputOpen, setInputOpen] = useState<boolean>(false)
 
     useEffect(() => {
         const currentUrl = location.pathname;
@@ -35,17 +35,13 @@ const Header = () => {
     }, [location]);
 
 
-    const handleInput = (e) => {
+    const handleInput = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             navigate(`?search=${inputValue}`)
             console.log(inputValue)
             setInputValue('')
         }
     }
-
-    window.loc = location
-    window.curUrl = location.pathname
-    window.inpuut = inputOpen
 
 
     return (

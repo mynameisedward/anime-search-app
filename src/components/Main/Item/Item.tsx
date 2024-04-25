@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Item.module.css'
 
 
-export interface ItemProps {
+interface ItemProps {
     imageUrl: string
 }
 

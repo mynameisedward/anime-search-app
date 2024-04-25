@@ -40,11 +40,6 @@ const Content = (props: ContentProps) => {
     const [paginationData, setPaginationData] = useState({})
 
 
-    window.page = page
-    window.loc = location
-    window.pagination = paginationData
-
-
     useEffect(() => {
         const fetchData = async () => {
             if (props.content == 'anime') {

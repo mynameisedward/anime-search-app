@@ -20,6 +20,15 @@ export type Item = {
     synopsis: string;
     loadingInsideCard: boolean;
     id: number;
+    setCardOpen?: (trueFalse: boolean) => void;
+    images?: [webp: [image_url: string, large_image_url: string]]
+}
+interface ItemArrInterface {
+    mal_id: number,
+    images: [webp: [large_image_url: string, image_url: string]],
+    title: string,
+    genres: Genre[],
+    synopsis: string,
 }
 
 
@@ -32,9 +41,9 @@ const Content = (props: ContentProps) => {
     const page = searchParams.get('page');
 
 
-    const [items, setItems] = useState<Item[]>([])
+    const [items, setItems] = useState<ItemArrInterface[]>([])
     const [isCardOpen, setIsCardOpen] = useState<boolean>(false)
-    const [item, setItem] = useState<Item>({})
+    const [item, setItem] = useState<Item | null>(null)
     const [loading, setLoading] = useState<boolean>(true) // Глобальный loading для всей страницы
     const [loadingInsideCard, setLoadingInsideCard] = useState<boolean>(false) // Loading для карточки
     const [paginationData, setPaginationData] = useState({})
@@ -76,18 +85,15 @@ const Content = (props: ContentProps) => {
     }, [location]);
 
 
-    window.searchParam = search
-    window.items = items
-
-    let changePage = (number) => {
+    let changePage = (number: number): void => {
         setPaginationData({ ...paginationData, current_page: number })
     }
 
-    let clickItem = (imageUrl, title, genres, synopsis, id) => { // обработчик для клика на айтем
+    let clickItem = (imageUrl: string, title: string, genres: Genre[], synopsis: string, id: number): void => { // обработчик для клика на айтем
         setLoadingInsideCard(true)
         setCardOpen(true)
 
-        setItem({})
+        setItem(null)
 
         let itemInfo = {
             imageUrl,
@@ -104,10 +110,10 @@ const Content = (props: ContentProps) => {
         setItem(itemInfo)
     }
 
-    let setCardOpen = (value) => { // Пробрасывание состояние вниз и вверх по компонентам
+    let setCardOpen = (value: boolean): void => { // Пробрасывание состояние вниз и вверх по компонентам
         setIsCardOpen(value)
     }
-    let getTitle = () => {
+    let getTitle = (): string => {
         if (search) {
             return `Search for: ${search}`
         } else {
@@ -132,7 +138,6 @@ const Content = (props: ContentProps) => {
                         }
                         {/* {items.length !== 0 && <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />} */}
                     </>
-
                 }
                 <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
             </div>

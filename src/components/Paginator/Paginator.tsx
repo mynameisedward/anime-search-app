@@ -15,10 +15,7 @@ const Paginator = (props: PaginatorProps) => {
     const location = useLocation()
     const currentUrl = location.pathname
     const [searchParams] = useSearchParams()
-    let page = searchParams.get('page');
-
-    window.curURL = currentUrl
-    window.loc = location
+    let page: string | number | null = searchParams.get('page');
 
     const arr = []
     for(let i = 1; i <= props.numberOfPages; i++) {
@@ -26,7 +23,7 @@ const Paginator = (props: PaginatorProps) => {
     }
 
 
-    const getClassNameForNumber = (number) => {
+    const getClassNameForNumber = (number: number | string) => {
         if(page == null) {
             page = 1
         }
@@ -36,14 +33,13 @@ const Paginator = (props: PaginatorProps) => {
             return s.number
         }
     }
-    const addPageQueryParam = (number) => {
+    const addPageQueryParam = (number: number): string => {
         const searchParams = new URLSearchParams(location.search);
-        searchParams.set('page', number);
+        searchParams.set('page', number.toString());
     
         return `${location.pathname}?${searchParams.toString()}`;
     };  
 
-    window.page = page
 
     return (
         <div className={s.paginator}> 

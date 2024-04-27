@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './Main.module.css'
 import Item from './Item/Item'
 import ItemCard from './ItemCard/ItemCard'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Preloader from '../Preloader/Preloader'
 import { useSearchParams, useLocation } from 'react-router-dom'
 import Paginator from '../Paginator/Paginator'
@@ -23,7 +23,7 @@ export interface Item {
     setCardOpen?: (trueFalse: boolean) => void;
     images?: {
         webp: {
-            image_url: string, 
+            image_url: string,
             large_image_url: string
         }
     }
@@ -33,7 +33,7 @@ interface ItemArrInterface {
     mal_id: number,
     images: {
         webp: {
-            large_image_url: string, 
+            large_image_url: string,
             image_url: string
         }
     },
@@ -55,37 +55,19 @@ const Content = (props: ContentProps) => {
     const location = useLocation()
     const page = searchParams.get('page');
 
-    const itemDefault = {
-        id: 1,
-        imageUrl: '123',
-        genres: [
-            {
-                mal_id: 1, 
-                name: 'something'
-            }
-        ],
-        synopsis: '123',
-        loadingInsideCard: false,
-        images: {
-            webp: {
-                image_url: 'something',
-                large_image_url: 'yoyoyo'
-            }
-        },
-        title: 'yo-yo'
-    }
-
 
     const [items, setItems] = useState<ItemArrInterface[]>([])
     const [isCardOpen, setIsCardOpen] = useState<boolean>(false)
     const [item, setItem] = useState<Item | null>(null)
     const [loading, setLoading] = useState<boolean>(true) // Глобальный loading для всей страницы
     const [loadingInsideCard, setLoadingInsideCard] = useState<boolean>(false) // Loading для карточки
-    const [paginationData, setPaginationData] = useState<PaginationData>({last_visible_page: 1, current_page: 1})
+    const [paginationData, setPaginationData] = useState<PaginationData>({ last_visible_page: 1, current_page: 1 })
+    const [error, setError] = useState('')
 
-
-    useEffect(() => {
-        const fetchData = async () => {
+    const fetchData = async () => {
+        try {
+            setError('')
+            setItems([])
             if (props.content == 'anime') {
                 if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
                     setLoading(true)
@@ -94,7 +76,7 @@ const Content = (props: ContentProps) => {
                     setPaginationData(response.data.pagination)
                 } else { // TOP 
                     setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/top/anime?rating=pg13&page=${page == undefined ? 1 : page}`);
+                    let response = await axios.get(`https://api.jikanasdf.moe/v4/top/anime?rating=pg13&page=${page == undefined ? 1 : page}`);
                     setItems(response.data.data);
                     setPaginationData(response.data.pagination)
                 }
@@ -111,7 +93,15 @@ const Content = (props: ContentProps) => {
                     setPaginationData(response.data.pagination)
                 }
             }
-        };
+        } catch (e: unknown) {
+            const error = e as AxiosError
+            setLoading(false)
+            setError(error.message)
+        }
+    };
+
+    useEffect(() => {
+
 
         fetchData();
         setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
@@ -164,13 +154,12 @@ const Content = (props: ContentProps) => {
                     <Preloader />
                     :
                     <>
-                        {items.length == 0 ? <h1 className={s.notFoundTitle}>NOT FOUND</h1> :
-                            <div className={s.items}>
-                                {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
-                                    <Item imageUrl={item.images.webp.image_url} />
-                                </div>)}
-                            </div>
-                        }
+                        <div className={s.items}>
+                            {items.map(item => <div key={item.mal_id} onClick={() => clickItem(item.images.webp.large_image_url, item.title, item.genres, item.synopsis, item.mal_id)}>
+                                <Item imageUrl={item.images.webp.image_url} />
+                            </div>)}
+                        </div>
+                        {error != '' && <h1 className={s.notFoundTitle}>{error}</h1>}
                         {/* {items.length !== 0 && <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />} */}
                     </>
                 }

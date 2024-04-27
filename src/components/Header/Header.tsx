@@ -14,15 +14,16 @@ const Header: React.FC = () => {
 
     const [inputOpen, setInputOpen] = useState<boolean>(false)
 
-    useEffect(() => {
-        const currentUrl = location.pathname;
-        const setLink = () => {
-            if (currentUrl.includes('anime')) {
-                setActiveLink('anime');
-            } else if (currentUrl.includes('manga')) {
-                setActiveLink('manga');
-            }
+
+    const setLink = (): void => {
+        const currentUrl: string = location.pathname;
+        if (currentUrl.includes('anime')) {
+            setActiveLink('anime');
+        } else if (currentUrl.includes('manga')) {
+            setActiveLink('manga');
         }
+    }
+    const inputOpenOrNot = (): void => {
         if (location.pathname == '/anime') {
             setInputOpen(true)
         } else if(location.pathname == '/manga') {
@@ -31,7 +32,11 @@ const Header: React.FC = () => {
         else {
             setInputOpen(false)
         }
+    }
+
+    useEffect(() => {
         setLink()
+        inputOpenOrNot()
     }, [location]);
 
 

@@ -11,9 +11,9 @@ import { Genre } from './ItemCard/ItemCard'
 
 
 export interface ContentProps {
-    content: String,
+    content: string,
 }
-export type Item = {
+export interface Item {
     imageUrl: string;
     title: string;
     genres: Genre[];
@@ -21,14 +21,29 @@ export type Item = {
     loadingInsideCard: boolean;
     id: number;
     setCardOpen?: (trueFalse: boolean) => void;
-    images?: [webp: [image_url: string, large_image_url: string]]
+    images?: {
+        webp: {
+            image_url: string, 
+            large_image_url: string
+        }
+    }
 }
+
 interface ItemArrInterface {
     mal_id: number,
-    images: [webp: [large_image_url: string, image_url: string]],
+    images: {
+        webp: {
+            large_image_url: string, 
+            image_url: string
+        }
+    },
     title: string,
     genres: Genre[],
     synopsis: string,
+}
+interface PaginationData {
+    last_visible_page: number,
+    current_page: number,
 }
 
 
@@ -40,13 +55,33 @@ const Content = (props: ContentProps) => {
     const location = useLocation()
     const page = searchParams.get('page');
 
+    const itemDefault = {
+        id: 1,
+        imageUrl: '123',
+        genres: [
+            {
+                mal_id: 1, 
+                name: 'something'
+            }
+        ],
+        synopsis: '123',
+        loadingInsideCard: false,
+        images: {
+            webp: {
+                image_url: 'something',
+                large_image_url: 'yoyoyo'
+            }
+        },
+        title: 'yo-yo'
+    }
+
 
     const [items, setItems] = useState<ItemArrInterface[]>([])
     const [isCardOpen, setIsCardOpen] = useState<boolean>(false)
     const [item, setItem] = useState<Item | null>(null)
     const [loading, setLoading] = useState<boolean>(true) // Глобальный loading для всей страницы
     const [loadingInsideCard, setLoadingInsideCard] = useState<boolean>(false) // Loading для карточки
-    const [paginationData, setPaginationData] = useState({})
+    const [paginationData, setPaginationData] = useState<PaginationData>({last_visible_page: 1, current_page: 1})
 
 
     useEffect(() => {
@@ -141,7 +176,7 @@ const Content = (props: ContentProps) => {
                 }
                 <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />
             </div>
-            {isCardOpen && <ItemCard id={item.id} loading={loadingInsideCard} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
+            {isCardOpen && item != null && <ItemCard id={item.id} setCardOpen={setCardOpen} imageUrl={item.imageUrl} title={item.title}
                 genres={item.genres} synopsis={item.synopsis} />}
         </>
     )

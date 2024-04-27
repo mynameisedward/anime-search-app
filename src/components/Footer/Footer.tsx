@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './Footer.module.css'
 
 
 const Footer: React.FC = () => {
+
   return (
     <footer className={s.Footer}>
         <div className={s.container}>

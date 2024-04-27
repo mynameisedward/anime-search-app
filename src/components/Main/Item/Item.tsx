@@ -3,7 +3,7 @@ import s from './Item.module.css'
 
 
 interface ItemProps {
-    imageUrl: string
+    imageUrl?: string
 }
 
 

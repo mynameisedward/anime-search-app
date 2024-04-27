@@ -84,27 +84,27 @@ const ItemPage: React.FC = () => {
                                                 currentUrl.includes('anime') 
                                                 &&
                                                 <>
-                                                    <li className={s.animeInfoItem}>Episodes: <span>{item.episodes}</span></li>
-                                                    <li className={s.animeInfoItem}>Source: <span>{item.source}</span></li>
-                                                    <li className={s.animeInfoItem}>Rating: <span>{item.rating}</span></li>
-                                                    <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span key={genre.mal_id} className={s.genreName}>{genre.name}</span>)}</span></li>
-                                                    <li className={s.animeInfoItem}>Score: <span>{item.score}</span></li>
-                                                    <li className={s.animeInfoItem}>Year: <span>{item.year}</span></li>
-                                                    <li className={s.animeInfoItem}>Status: <span>{item.status}</span></li>
-                                                    <li className={s.animeInfoItem}>Duration: <span>{item.duration}</span></li>
-                                                    <li className={s.animeInfoItem}>Type: <span>{item.type}</span></li>
+                                                    {item.episodes && <li className={s.animeInfoItem}>Episodes: <span>{item.episodes}</span></li>}
+                                                    {item.source && <li className={s.animeInfoItem}>Source: <span>{item.source}</span></li>}
+                                                    {item.rating && <li className={s.animeInfoItem}>Rating: <span>{item.rating}</span></li>}
+                                                    {item.genres && <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span key={genre.mal_id} className={s.genreName}>{genre.name}</span>)}</span></li>}
+                                                    {item.score && <li className={s.animeInfoItem}>Score: <span>{item.score}</span></li>}
+                                                    {item.year && <li className={s.animeInfoItem}>Year: <span>{item.year}</span></li>}
+                                                    {item.status && <li className={s.animeInfoItem}>Status: <span>{item.status}</span></li>}
+                                                    {item.duration && <li className={s.animeInfoItem}>Duration: <span>{item.duration}</span></li>}
+                                                    {item.type && <li className={s.animeInfoItem}>Type: <span>{item.type}</span></li>}
                                                 </>
                                             }
                                             {
                                                 currentUrl.includes('manga') &&
                                                 <>
                                                     { item.chapters && <li className={s.animeInfoItem}>Chapters: <span>{item.chapters}</span></li>  }
-                                                    <li className={s.animeInfoItem}>Score: <span>{item.score}</span></li>
-                                                    <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span key={genre.mal_id} className={s.genreName}>{genre.name}</span>)}</span></li>
-                                                    <li className={s.animeInfoItem}>Rank: <span>{item.rank}</span></li>
-                                                    <li className={s.animeInfoItem}>Type: <span>{item.type}</span></li>
-                                                    <li className={s.animeInfoItem}>Status: <span>{item.status}</span></li>
-                                                    <li className={s.animeInfoItem}>Members: <span>{item.members}</span></li>
+                                                    {item.score && <li className={s.animeInfoItem}>Score: <span>{item.score}</span></li>}
+                                                    {item.genres && <li className={s.animeInfoItem}>Genres: <span>{item.genres.map((genre) => <span key={genre.mal_id} className={s.genreName}>{genre.name}</span>)}</span></li>}
+                                                    {item.rank && <li className={s.animeInfoItem}>Rank: <span>{item.rank}</span></li>}
+                                                    {item.type && <li className={s.animeInfoItem}>Type: <span>{item.type}</span></li>}
+                                                    {item.status && <li className={s.animeInfoItem}>Status: <span>{item.status}</span></li>}
+                                                    {item.members && <li className={s.animeInfoItem}>Members: <span>{item.members}</span></li>}
                                                 </>
                                             }
                                         </ul>

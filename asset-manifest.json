@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/anime-search-app/static/css/main.767a65ad.css",
+    "main.js": "/anime-search-app/static/js/main.c842affb.js",
+    "static/media/Preloader.gif": "/anime-search-app/static/media/Preloader.670d1bae935dbd4ac0d7.gif",
+    "static/media/chooseArrow.png": "/anime-search-app/static/media/chooseArrow.993a45da844236e6be97.png",
+    "static/media/closeButtonIcon.svg": "/anime-search-app/static/media/closeButtonIcon.5ae0224dc67513ed157d9a205d8d5e1d.svg",
+    "index.html": "/anime-search-app/index.html",
+    "main.767a65ad.css.map": "/anime-search-app/static/css/main.767a65ad.css.map",
+    "main.c842affb.js.map": "/anime-search-app/static/js/main.c842affb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.767a65ad.css",
+    "static/js/main.c842affb.js"
+  ]
+}

@@ -47,7 +47,7 @@ interface PaginationData {
 }
 
 
-const Content = (props: ContentProps) => {
+const Content: React.FC<ContentProps> = (props) => {
 
 
     const [searchParams] = useSearchParams()
@@ -62,11 +62,8 @@ const Content = (props: ContentProps) => {
     const [loading, setLoading] = useState<boolean>(true) // Глобальный loading для всей страницы
     const [loadingInsideCard, setLoadingInsideCard] = useState<boolean>(false) // Loading для карточки
     const [paginationData, setPaginationData] = useState<PaginationData>({ last_visible_page: 1, current_page: 1 })
-    const [error, setError] = useState('')
 
     const fetchData = async () => {
-        try {
-            setError('')
             setItems([])
             if (props.content == 'anime') {
                 if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
@@ -76,7 +73,7 @@ const Content = (props: ContentProps) => {
                     setPaginationData(response.data.pagination)
                 } else { // TOP 
                     setLoading(true)
-                    let response = await axios.get(`https://api.jikanasdf.moe/v4/top/anime?rating=pg13&page=${page == undefined ? 1 : page}`);
+                    let response = await axios.get(`https://api.jikan.moe/v4/top/anime?rating=pg13&page=${page == undefined ? 1 : page}`);
                     setItems(response.data.data);
                     setPaginationData(response.data.pagination)
                 }
@@ -93,11 +90,6 @@ const Content = (props: ContentProps) => {
                     setPaginationData(response.data.pagination)
                 }
             }
-        } catch (e: unknown) {
-            const error = e as AxiosError
-            setLoading(false)
-            setError(error.message)
-        }
     };
 
     useEffect(() => {
@@ -159,7 +151,6 @@ const Content = (props: ContentProps) => {
                                 <Item imageUrl={item.images.webp.image_url} />
                             </div>)}
                         </div>
-                        {error != '' && <h1 className={s.notFoundTitle}>{error}</h1>}
                         {/* {items.length !== 0 && <Paginator numberOfPages={paginationData.last_visible_page} changePage={changePage} />} */}
                     </>
                 }

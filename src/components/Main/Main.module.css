@@ -1,11 +1,10 @@
 .Main {
-    height: 100%;
+    min-height: 100%;
     padding: 30px 0px;
     border-top: 1px solid rgb(38, 42, 47);
     position: relative;
     flex: 1;
-    margin-bottom: auto;
-}
+}   
 
 .container {
     display: flex;

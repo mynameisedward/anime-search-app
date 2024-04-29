@@ -9,11 +9,10 @@ export interface PaginatorProps {
 }
 
 
-const Paginator = (props: PaginatorProps) => {
+const Paginator: React.FC<PaginatorProps> = (props) => {
 
 
     const location = useLocation()
-    const currentUrl = location.pathname
     const [searchParams] = useSearchParams()
     let page: string | number | null = searchParams.get('page');
 
@@ -23,7 +22,7 @@ const Paginator = (props: PaginatorProps) => {
     }
 
 
-    const getClassNameForNumber = (number: number | string) => {
+    const getClassNameForNumber = (number: number | string): string => {
         if(page == null) {
             page = 1
         }

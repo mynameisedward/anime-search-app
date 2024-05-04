@@ -21,6 +21,8 @@ const Header: React.FC = () => {
             setActiveLink('anime');
         } else if (currentUrl.includes('manga')) {
             setActiveLink('manga');
+        } else {
+            setActiveLink('')
         }
     }
     const inputOpenOrNot = (): void => {
@@ -40,6 +42,10 @@ const Header: React.FC = () => {
     }, [location]);
 
 
+    let window1 = window as any
+
+    window1.activeLink = activeLink
+
     const handleInput = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             navigate(`?search=${inputValue}`)
@@ -52,7 +58,7 @@ const Header: React.FC = () => {
     return (
         <header className={s.Header}>
             <div className={s.container}>
-                <Link to={'/'}>
+                <Link to={''}>
                     <h1 className={s.logo}>Anime Search App</h1>
                 </Link>
                 {inputOpen &&
@@ -63,11 +69,11 @@ const Header: React.FC = () => {
                 }
 
                 <div className={s.choose}>
-                    <Link to={'/anime'}>
+                    <Link to={'anime'}>
                         <span className={activeLink == 'anime' ? s.optionAnime : s.option}>Anime</span>
                     </Link>
                     <span className={s.option}>/</span>
-                    <Link to={'/manga'}>
+                    <Link to={'manga'}>
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>

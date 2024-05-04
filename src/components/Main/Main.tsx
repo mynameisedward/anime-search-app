@@ -9,7 +9,7 @@ const Main = () => {
     return (
         <main className={s.Main}>
             <Routes>
-                <Route path='/' element={
+                <Route path='' element={
                     <div className={s.container}>
                         <h1 className={s.title}>Выберите аниме или мангу!</h1>
                     </div>

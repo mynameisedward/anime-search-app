@@ -17,9 +17,9 @@ const Header: React.FC = () => {
 
     const setLink = (): void => {
         const currentUrl: string = location.pathname;
-        if (currentUrl.includes('anime')) {
+        if (currentUrl.includes('anime-search-app/anime')) {
             setActiveLink('anime');
-        } else if (currentUrl.includes('manga')) {
+        } else if (currentUrl.includes('anime-search-app/manga')) {
             setActiveLink('manga');
         } else {
             setActiveLink('')
@@ -35,6 +35,14 @@ const Header: React.FC = () => {
             setInputOpen(false)
         }
     }
+    const getLinkForURL = (content: string): string => {
+        if(window.location.pathname == '/') {
+            return `${content}`
+        } else {
+            return `${window.location.pathname}/${content}`
+        }
+    }
+
 
     useEffect(() => {
         setLink()
@@ -45,6 +53,7 @@ const Header: React.FC = () => {
     let window1 = window as any
 
     window1.activeLink = activeLink
+    window1.pname = window.location.pathname
 
     const handleInput = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
@@ -55,10 +64,11 @@ const Header: React.FC = () => {
     }
 
 
+
     return (
         <header className={s.Header}>
             <div className={s.container}>
-                <Link to={''}>
+                <Link to={'/anime-search-app'}>
                     <h1 className={s.logo}>Anime Search App</h1>
                 </Link>
                 {inputOpen &&
@@ -69,16 +79,14 @@ const Header: React.FC = () => {
                 }
 
                 <div className={s.choose}>
-                    <Link to={'anime'}>
+                    <Link to={'anime-search-app/anime'}>
                         <span className={activeLink == 'anime' ? s.optionAnime : s.option}>Anime</span>
                     </Link>
                     <span className={s.option}>/</span>
-                    <Link to={'manga'}>
+                    <Link to={'anime-search-app/manga'}>
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>
-                {activeLink == '' && <img src={chooseArrow} alt="Choose anime or manga" className={s.arrow} />}
-
             </div>
         </header>
     )

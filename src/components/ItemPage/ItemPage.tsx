@@ -44,10 +44,10 @@ const ItemPage: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (currentUrl.includes('anime')) {
+            if (currentUrl.includes('anime-search-app/anime')) {
                 let response = await axios.get(`https://api.jikan.moe/v4/anime/${id}/full`);
                 setItem(response.data.data);
-            } else if (currentUrl.includes('manga')) {
+            } else if (currentUrl.includes('anime-search-app/manga')) {
                 let response = await axios.get(`https://api.jikan.moe/v4/manga/${id}/full`);
                 setItem(response.data.data);
             }

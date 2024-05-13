@@ -11,7 +11,7 @@ function App() {
     return (
 
         <div className='App'>
-            <BrowserRouter>
+            <BrowserRouter basename="/anime-search-app">
                     <Header />
                     <Main />
                     <Footer />

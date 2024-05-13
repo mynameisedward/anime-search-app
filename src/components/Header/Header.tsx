@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import s from './Header.module.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import {Link, useLocation, useNavigate } from 'react-router-dom'
 import chooseArrow from '../../assets/chooseArrow.png'
+
 
 
 const Header: React.FC = () => {
@@ -26,9 +27,9 @@ const Header: React.FC = () => {
         }
     }
     const inputOpenOrNot = (): void => {
-        if (location.pathname == '/anime') {
+        if (location.pathname == '/anime-search-app/anime') {
             setInputOpen(true)
-        } else if(location.pathname == '/manga') {
+        } else if(location.pathname == '/anime-search-app/manga') {
             setInputOpen(true)
         } 
         else {
@@ -79,11 +80,11 @@ const Header: React.FC = () => {
                 }
 
                 <div className={s.choose}>
-                    <Link to={'anime-search-app/anime'}>
+                    <Link to={'/anime-search-app/anime'}>
                         <span className={activeLink == 'anime' ? s.optionAnime : s.option}>Anime</span>
                     </Link>
                     <span className={s.option}>/</span>
-                    <Link to={'anime-search-app/manga'}>
+                    <Link to={'/anime-search-app/manga'}>
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>

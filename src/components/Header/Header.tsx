@@ -18,18 +18,18 @@ const Header: React.FC = () => {
 
     const setLink = (): void => {
         const currentUrl: string = location.pathname;
-        if (currentUrl.includes('anime-search-app/anime')) {
+        if (currentUrl.includes('/anime')) {
             setActiveLink('anime');
-        } else if (currentUrl.includes('anime-search-app/manga')) {
+        } else if (currentUrl.includes('/manga')) {
             setActiveLink('manga');
         } else {
             setActiveLink('')
         }
     }
     const inputOpenOrNot = (): void => {
-        if (location.pathname == '/anime-search-app/anime') {
+        if (location.pathname == '/anime') {
             setInputOpen(true)
-        } else if(location.pathname == '/anime-search-app/manga') {
+        } else if(location.pathname == '/manga') {
             setInputOpen(true)
         } 
         else {
@@ -48,6 +48,7 @@ const Header: React.FC = () => {
     useEffect(() => {
         setLink()
         inputOpenOrNot()
+        console.log(location.pathname)
     }, [location]);
 
 
@@ -69,7 +70,7 @@ const Header: React.FC = () => {
     return (
         <header className={s.Header}>
             <div className={s.container}>
-                <Link to={'/anime-search-app'}>
+                <Link to={'/'}>
                     <h1 className={s.logo}>Anime Search App</h1>
                 </Link>
                 {inputOpen &&
@@ -80,11 +81,11 @@ const Header: React.FC = () => {
                 }
 
                 <div className={s.choose}>
-                    <Link to={'/anime-search-app/anime'}>
+                    <Link to={'/anime'}>
                         <span className={activeLink == 'anime' ? s.optionAnime : s.option}>Anime</span>
                     </Link>
                     <span className={s.option}>/</span>
-                    <Link to={'/anime-search-app/manga'}>
+                    <Link to={'/manga'}>
                         <span className={activeLink == 'manga' ? s.optionManga : s.option}>Manga</span>
                     </Link>
                 </div>

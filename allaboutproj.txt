@@ -29,6 +29,6 @@ Features:
     • сделать трейлер, ютуб вроде плеер
     
 Баги:        
-
+    /anime-search-app/anime-search-app/something
     
     

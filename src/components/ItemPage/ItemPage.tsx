@@ -3,7 +3,7 @@ import s from './ItemPage.module.css'
 import { useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 import Preloader from '../Preloader/Preloader'
-
+import YouTube from 'react-youtube'
 
 
 export type ItemPageType = {
@@ -17,6 +17,7 @@ export type ItemPageType = {
     episodes: number;
     source: string;
     rating: string;
+    trailer: {youtube_id: string | null}
     genres: {mal_id: number, type: string, name: string,}[];
     score: number;
     year: number;
@@ -26,7 +27,8 @@ export type ItemPageType = {
     chapters: number;
     rank: number;
     members: number;
-    synopsis: string
+    synopsis: string;
+    mal_id: number
 } | null
 
 const ItemPage: React.FC = () => {
@@ -44,16 +46,14 @@ const ItemPage: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (currentUrl.includes('anime-search-app/anime')) {
+            if (currentUrl.includes('/anime')) {
                 let response = await axios.get(`https://api.jikan.moe/v4/anime/${id}/full`);
                 setItem(response.data.data);
-            } else if (currentUrl.includes('anime-search-app/manga')) {
+            } else if (currentUrl.includes('/manga')) {
                 let response = await axios.get(`https://api.jikan.moe/v4/manga/${id}/full`);
                 setItem(response.data.data);
             }
         }
-
-
 
         fetchData()
         setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
@@ -71,6 +71,7 @@ const ItemPage: React.FC = () => {
                     <>
                         { item != null ?  
                             <> 
+
                                 <div className={s.firstRow}>
                                     <div className={s.animeImageDiv}>
                                         <img src={item.images.webp.large_image_url} alt="" className={s.animeImage} />
@@ -84,6 +85,7 @@ const ItemPage: React.FC = () => {
                                                 currentUrl.includes('anime') 
                                                 &&
                                                 <>
+                                                    {item.mal_id && <li className={s.animeInfoItem}>ID: <span>{item.mal_id}</span></li>}
                                                     {item.episodes && <li className={s.animeInfoItem}>Episodes: <span>{item.episodes}</span></li>}
                                                     {item.source && <li className={s.animeInfoItem}>Source: <span>{item.source}</span></li>}
                                                     {item.rating && <li className={s.animeInfoItem}>Rating: <span>{item.rating}</span></li>}
@@ -109,11 +111,19 @@ const ItemPage: React.FC = () => {
                                             }
                                         </ul>
                                     </div>
+                                    
                                 </div>
+                                
                                 <div className={s.synopsisDiv}>
                                     <h3 className={s.synopsisTitle}>Synopsis</h3>
                                     <p className={s.synopsisText}>{item.synopsis}</p>
                                 </div>
+                                {currentUrl.includes('anime') && item.trailer.youtube_id !== null &&  // проверка: аниме и есть трейлер — показываем
+                                    <article className={s.youtubeTrailer}>
+                                        <h1>Trailer</h1>
+                                        {item.trailer.youtube_id !== null && <YouTube videoId={item.trailer.youtube_id}/>}
+                                    </article>
+                                }   
                             </> : <></>
                         }
                     </>

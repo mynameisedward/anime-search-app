@@ -56,3 +56,12 @@
 .genreName {
     margin-right: 15px;
 }
+.youtubeTrailer {
+    margin-top: 40px;
+}
+.youtubeTrailer h1 {
+    font-weight: 600;
+    color: white;
+    font-size: 38px;
+    margin-bottom: 8px;
+}

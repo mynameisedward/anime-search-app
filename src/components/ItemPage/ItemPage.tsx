@@ -27,8 +27,7 @@ export type ItemPageType = {
     chapters: number;
     rank: number;
     members: number;
-    synopsis: string;
-    mal_id: number
+    synopsis: string
 } | null
 
 const ItemPage: React.FC = () => {
@@ -55,6 +54,8 @@ const ItemPage: React.FC = () => {
             }
         }
 
+
+
         fetchData()
         setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
             setLoading(false)
@@ -71,7 +72,6 @@ const ItemPage: React.FC = () => {
                     <>
                         { item != null ?  
                             <> 
-
                                 <div className={s.firstRow}>
                                     <div className={s.animeImageDiv}>
                                         <img src={item.images.webp.large_image_url} alt="" className={s.animeImage} />
@@ -85,7 +85,6 @@ const ItemPage: React.FC = () => {
                                                 currentUrl.includes('anime') 
                                                 &&
                                                 <>
-                                                    {item.mal_id && <li className={s.animeInfoItem}>ID: <span>{item.mal_id}</span></li>}
                                                     {item.episodes && <li className={s.animeInfoItem}>Episodes: <span>{item.episodes}</span></li>}
                                                     {item.source && <li className={s.animeInfoItem}>Source: <span>{item.source}</span></li>}
                                                     {item.rating && <li className={s.animeInfoItem}>Rating: <span>{item.rating}</span></li>}
@@ -111,9 +110,7 @@ const ItemPage: React.FC = () => {
                                             }
                                         </ul>
                                     </div>
-                                    
                                 </div>
-                                
                                 <div className={s.synopsisDiv}>
                                     <h3 className={s.synopsisTitle}>Synopsis</h3>
                                     <p className={s.synopsisText}>{item.synopsis}</p>
@@ -121,9 +118,9 @@ const ItemPage: React.FC = () => {
                                 {currentUrl.includes('anime') && item.trailer.youtube_id !== null &&  // проверка: аниме и есть трейлер — показываем
                                     <article className={s.youtubeTrailer}>
                                         <h1>Trailer</h1>
-                                        {item.trailer.youtube_id !== null && <YouTube videoId={item.trailer.youtube_id}/>}
+                                        {item.trailer.youtube_id !== null && <div className={s.trailerDiv}><YouTube videoId={item.trailer.youtube_id}/></div>}
                                     </article>
-                                }   
+                                }  
                             </> : <></>
                         }
                     </>

@@ -88,3 +88,20 @@
         height: 200px;
     }
 }
+
+.backButton {
+    font-family: Inter;
+    color: black;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(23, 184, 144);
+    border-radius: 9px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.backButton img {
+    width: 20px;
+    height: 20px;
+}

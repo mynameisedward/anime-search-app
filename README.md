@@ -4,7 +4,9 @@
 ### О проекте
 
 Anime Search App это сервис для просмотра информации об аниме или манге.
-[Просмотр приложения](https://mynameisedwad.github.io/anime-search-app) фигурирует как база данных с информацией о аниме или манги
+
+
+[Просмотр приложения](https://mynameisedwad.github.io/anime-search-app)
 
 
 [Jikan Rest API](https://docs.api.jikan.moe/#section/Information) фигурирует как база данных с информацией о аниме или манги

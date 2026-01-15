@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import s from './Header.module.css'
 import {Link, useLocation, useNavigate } from 'react-router-dom'
-import chooseArrow from '../../assets/chooseArrow.png'
-
+import searchIcon from './magnifier.svg'
 
 
 const Header: React.FC = () => {
+    let window1 = window as any
+    
 
     const [inputValue, setInputValue] = useState<string>('')
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ const Header: React.FC = () => {
     const [activeLink, setActiveLink] = useState<string>('')
 
     const [inputOpen, setInputOpen] = useState<boolean>(false)
-
+    const [inputFocus, setInputFocus] = useState<boolean>(false)
 
     const setLink = (): void => {
         const currentUrl: string = location.pathname;
@@ -26,57 +27,53 @@ const Header: React.FC = () => {
             setActiveLink('')
         }
     }
-    const inputOpenOrNot = (): void => {
+
+    const inputOpenOrNot = (): void => { // Если не выбрано аниме или манга, то не показываем input
         if (location.pathname == '/anime') {
             setInputOpen(true)
         } else if(location.pathname == '/manga') {
             setInputOpen(true)
-        } 
-        else {
+        } else {
             setInputOpen(false)
         }
     }
-    const getLinkForURL = (content: string): string => {
-        if(window.location.pathname == '/') {
-            return `${content}`
-        } else {
-            return `${window.location.pathname}/${content}`
-        }
-    }
 
-
-    useEffect(() => {
-        setLink()
-        inputOpenOrNot()
-        console.log(location.pathname)
-    }, [location]);
-
-
-    let window1 = window as any
-
-    window1.activeLink = activeLink
-    window1.pname = window.location.pathname
+    // const getLinkForURL = (content: string): string => {
+    //     if(window.location.pathname == '/') {
+    //         return `${content}`
+    //     } else {
+    //         return `${window.location.pathname}/${content}`
+    //     }
+    // }
 
     const handleInput = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             navigate(`?search=${inputValue}`)
-            console.log(inputValue)
-            setInputValue('')
         }
     }
-
-
-
+    
+    useEffect(() => {
+        setLink()
+        inputOpenOrNot()
+    }, [location]);
+    
     return (
         <header className={s.Header}>
             <div className={s.container}>
                 <Link to={'/'}>
                     <h1 className={s.logo}>Anime Search App</h1>
                 </Link>
-                {inputOpen &&
+                {inputOpen && // Если не выбрано аниме или манга, то не показываем input
                     <div className={s.input}>
-                        <input type="text" className={s.input__input} placeholder='What are you looking for?'
-                            value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={handleInput} />
+                        {inputFocus &&<img src={searchIcon} alt="" className={s.searchIcon}/>}
+                        <input type="text" 
+                            className={`${s.input__input} ${inputFocus && s.input_focus}`} 
+                            placeholder='What are you looking for?'
+                            value={inputValue} 
+                            onChange={(e) => setInputValue(e.target.value)} 
+                            onKeyPress={handleInput} 
+                            onFocus={() => setInputFocus(true)}
+                            onBlur={() => setInputFocus(false)}/>
                     </div>
                 }
 

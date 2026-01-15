@@ -1,6 +1,3 @@
-.Header {
-
-}
 .container {
     max-width: 900px;
     padding: 0px 10px;
@@ -20,17 +17,36 @@
     font-weight: 800;
     line-height: 55px;
 }
+.input {
+    position: relative;
+    display: inline-block;
+}
+.searchIcon {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+
 .input__input {
-    width: 748px;
+    width: 770px;
     height: 67px;
     border-radius: 10px;
     border: none;
-    background: rgb(38, 42, 47);
-    padding-left: 21px;
+    background: #262a2f;
+    padding-left: 20px;
     color: white;
     font-size: 24px;
     font-family: Inter;
     outline: none;
+    transition: all 0.1s ease-in-out;
+}
+.input_focus {
+    padding-left: 53px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .choose {
     display: flex;
@@ -70,7 +86,6 @@ a {
     text-decoration: none;
     color: #fff;
 }
-
 
 @media (max-width: 840px) {
     .container {

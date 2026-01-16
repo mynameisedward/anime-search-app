@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import s from './Main.module.css'
-import Item from './Item/Item'
-import ItemCard from './ItemCard/ItemCard'
+import s from '../Main.module.css'
+import Item from '../Item/Item'
+import ItemCard from '../ItemCard/ItemCard'
 import axios, { AxiosError } from 'axios'
-import Preloader from '../Preloader/Preloader'
+import Preloader from '../../Preloader/Preloader'
 import { useSearchParams, useLocation } from 'react-router-dom'
-import Paginator from '../Paginator/Paginator'
-import { Genre } from './ItemCard/ItemCard'
-
+import Paginator from '../../Paginator/Paginator'
+import { Genre } from '../ItemCard/ItemCard'
+import getUrlForRequest from './getUrlForRequest'
 
 
 export interface ContentProps {
@@ -46,9 +46,9 @@ interface PaginationData {
     current_page: number,
 }
 
-
 const Content: React.FC<ContentProps> = (props) => {
 
+    
 
     const [searchParams] = useSearchParams()
     const search = searchParams.get('search')
@@ -65,42 +65,21 @@ const Content: React.FC<ContentProps> = (props) => {
 
     const fetchData = async () => {
             setItems([])
-            if (props.content == 'anime') {
-                if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
-                    setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/anime?q=${search}&rating=pg13&page=${page ? page : 1}`);
-                    setItems(response.data.data);
-                    setPaginationData(response.data.pagination)
-                } else { // TOP 
-                    setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/top/anime?rating=pg13&page=${page == undefined ? 1 : page}`);
-                    setItems(response.data.data);
-                    setPaginationData(response.data.pagination)
-                }
-            } else if (props.content == 'manga') {
-                if (search) { // ЕСЛИ ИЩЕМ ЧТО ЛИБО
-                    setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/manga?q=${search}&sfw=true&page=${page ? page : 1}`);
-                    setItems(response.data.data);
-                    setPaginationData(response.data.pagination)
-                } else { // TOP
-                    setLoading(true)
-                    let response = await axios.get(`https://api.jikan.moe/v4/top/manga?page=${page == undefined ? 1 : page}`);
-                    setItems(response.data.data);
-                    setPaginationData(response.data.pagination)
-                }
-            }
+
+            const url = getUrlForRequest({
+                content: props.content,
+                page,
+                search,
+            })
+
+            setLoading(true)
+            let response = await axios.get(url)
+            setItems(response.data.data)
+            setPaginationData(response.data.pagination)
     };
 
-    useEffect(() => {
-
-
-        fetchData();
-        setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
-            setLoading(false)
-        }, 3000)
-    }, [location]);
-
+    let window1 = window as any
+    window1.items = items
 
     let changePage = (number: number): void => {
         setPaginationData({ ...paginationData, current_page: number })
@@ -137,6 +116,13 @@ const Content: React.FC<ContentProps> = (props) => {
             return `Trending ${props.content == 'anime' ? 'anime' : 'manga'}`
         }
     }
+
+    useEffect(() => {
+        fetchData();
+        setTimeout(() => { // Добавляем времени чтобы люди успели рассмотреть этого чудесного Preloader-кота
+            setLoading(false)
+        }, 3000)
+    }, [location]);
 
     return (
         <>

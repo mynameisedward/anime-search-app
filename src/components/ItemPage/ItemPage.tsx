@@ -17,7 +17,10 @@ export type ItemPageType = {
     episodes: number;
     source: string;
     rating: string;
-    trailer: {youtube_id: string | null}
+    trailer: {
+        youtube_id: string | null;
+        embed_url: string | null;
+    }
     genres: {mal_id: number, type: string, name: string,}[];
     score: number;
     year: number;
@@ -27,7 +30,7 @@ export type ItemPageType = {
     chapters: number;
     rank: number;
     members: number;
-    synopsis: string
+    synopsis: string;
 } | null
 
 const ItemPage: React.FC = () => {
@@ -64,6 +67,10 @@ const ItemPage: React.FC = () => {
             setLoading(false)
         }, 3000)
     }, [])
+
+    const window1 = window as any
+
+    window1.item = item
 
     return (
         <div>
@@ -122,10 +129,10 @@ const ItemPage: React.FC = () => {
                                     <h3 className={s.synopsisTitle}>Synopsis</h3>
                                     <p className={s.synopsisText}>{item.synopsis}</p>
                                 </div>
-                                {currentUrl.includes('anime') && item.trailer.youtube_id !== null &&  // проверка: аниме и есть трейлер — показываем
+                                {currentUrl.includes('anime') && item.trailer.youtube_id &&  // проверка: аниме и есть трейлер — показываем
                                     <article className={s.youtubeTrailer}>
                                         <h1>Trailer</h1>
-                                        {item.trailer.youtube_id !== null && <div className={s.trailerDiv}><YouTube videoId={item.trailer.youtube_id}/></div>}
+                                        {item.trailer.youtube_id && <div className={s.trailerDiv}><YouTube videoId={item.trailer.youtube_id}/></div>}
                                     </article>
                                 }  
                             </> : <></>

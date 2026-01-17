@@ -2,13 +2,8 @@ import React, { useState } from 'react'
 import s from './ItemCard.module.css'
 import closeButton from './closeButtonIcon.svg'
 import { Link } from 'react-router-dom'
+import { Genre } from '../types/types'
 
-
-
-export interface Genre {
-    mal_id: number, 
-    name: string,
-}
 export interface ItemCardProps {
     imageUrl: string,
     title: string,
@@ -17,7 +12,6 @@ export interface ItemCardProps {
     id: number,
     setCardOpen: (trueFalse: boolean) => void
 }
-
 
 const ItemCard = (props: ItemCardProps) => {
 

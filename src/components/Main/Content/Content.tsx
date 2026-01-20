@@ -82,6 +82,10 @@ const Content: React.FC<ContentProps> = (props) => {
         }, 3000)
     }, [location]);
 
+
+    let window1 = window as any
+    window1.urlll = new URL('https://api.jikan.moe/v4/anime?q=naruto&rating=pg13&page=1')
+
     return (
         <>
             <div className={s.container}>

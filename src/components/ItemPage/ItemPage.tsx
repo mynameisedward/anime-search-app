@@ -40,10 +40,6 @@ const ItemPage: React.FC = () => {
         }, 3000)
     }, [])
 
-    const window1 = window as any
-
-    window1.item = item
-
     return (
         <div>
             <div className={s.container}>

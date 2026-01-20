@@ -5,8 +5,6 @@ import searchIcon from './magnifier.svg'
 
 
 const Header: React.FC = () => {
-    let window1 = window as any
-    
 
     const [inputValue, setInputValue] = useState<string>('')
     const navigate = useNavigate()
@@ -37,14 +35,6 @@ const Header: React.FC = () => {
             setInputOpen(false)
         }
     }
-
-    // const getLinkForURL = (content: string): string => {
-    //     if(window.location.pathname == '/') {
-    //         return `${content}`
-    //     } else {
-    //         return `${window.location.pathname}/${content}`
-    //     }
-    // }
 
     const handleInput = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {

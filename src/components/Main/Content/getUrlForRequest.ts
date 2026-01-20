@@ -6,23 +6,45 @@ type funcParams = {
 }
 
 function getUrlForRequest(params: funcParams): string {
-    const {content, search, page} = params
-
-
-
-    if(content === 'anime') {
-        if(search) { // если ищем что-либо
-            return `https://api.jikan.moe/v4/anime?q=${search}&rating=pg13&page=${page ? page : 1}`
-        } else { // топ 
-            return `https://api.jikan.moe/v4/top/anime?rating=pg13&page=${page == undefined ? 1 : page}`
+    const { content, search, page } = params;
+    let baseUrl = 'https://api.jikan.moe/v4/';
+    
+    if (content === 'anime') {
+        if (search) {
+            baseUrl += 'anime';            
+        } else {
+            baseUrl += 'top/anime';
         }
     } else {
-        if(search) { // если ищем что-либо
-            return `https://api.jikan.moe/v4/manga?q=${search}&sfw=true&page=${page ? page : 1}`
-        } else { // топ
-            return `https://api.jikan.moe/v4/top/manga?page=${page == undefined ? 1 : page}`
+        if (search) {
+            baseUrl += 'manga';
+        } else {
+            baseUrl += 'top/manga';
         }
     }
+
+    const url = new URL(baseUrl);
+    const searchParams = new URLSearchParams();
+
+    if (search) {
+        searchParams.set('q', search);
+    }
+
+    if (content === 'anime') {
+        searchParams.set('rating', 'pg13');
+    } else {
+        searchParams.set('sfw', 'true');
+    }
+
+    if (page != null) {
+        searchParams.set('page', page);
+    } else {
+        searchParams.set('page', '1');
+    }
+
+    url.search = searchParams.toString();
+
+    return url.href;
 }
 
 export default getUrlForRequest

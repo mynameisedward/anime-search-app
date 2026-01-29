@@ -1,17 +1,16 @@
-
 type funcParams = {
-    content: string,
-    search: string | null,
-    page: string | null,
-}
+    content: string;
+    search: string | null;
+    page: string | null;
+};
 
 function getUrlForRequest(params: funcParams): string {
     const { content, search, page } = params;
     let baseUrl = 'https://api.jikan.moe/v4/';
-    
+
     if (content === 'anime') {
         if (search) {
-            baseUrl += 'anime';            
+            baseUrl += 'anime';
         } else {
             baseUrl += 'top/anime';
         }
@@ -47,4 +46,4 @@ function getUrlForRequest(params: funcParams): string {
     return url.href;
 }
 
-export default getUrlForRequest
+export default getUrlForRequest;

@@ -10,14 +10,22 @@
       "skipLibCheck": true,
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
+
+      // ---- Строгость ----
       "strict": true,
       "forceConsistentCasingInFileNames": true,
       "noFallthroughCasesInSwitch": true,
+
+      // ---- Модули ----
       "module": "esnext",
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "isolatedModules": true,
+
+      // ---- Вывод ----
       "noEmit": true,
+
+      // ---- Настройки для React ----
       "jsx": "react-jsx"
     },
     "include": [

@@ -1,18 +1,13 @@
 import React from 'react';
 import s from './Paginator.module.css';
-import {
-    Link,
-    useLocation,
-    useParams,
-    useSearchParams,
-} from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 export interface PaginatorProps {
     numberOfPages: number;
     changePage: (number: number) => void;
 }
 
-const Paginator: React.FC<PaginatorProps> = (props) => {
+const Paginator = (props: PaginatorProps) => {
     const location = useLocation();
     const [searchParams] = useSearchParams();
     let page: string | number | null = searchParams.get('page');

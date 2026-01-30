@@ -7,7 +7,7 @@ import YouTube from 'react-youtube';
 import arrowIcon from '../../assets/arrow.svg';
 import { ItemPageType } from './types';
 
-const ItemPage: React.FC = () => {
+const ItemPage = () => {
     const [item, setItem] = useState<ItemPageType>(null);
     const [loading, setLoading] = useState(true);
 

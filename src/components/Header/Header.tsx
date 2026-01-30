@@ -3,7 +3,7 @@ import s from './Header.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import searchIcon from './magnifier.svg';
 
-const Header: React.FC = () => {
+const Header = () => {
     const [inputValue, setInputValue] = useState<string>('');
     const navigate = useNavigate();
 

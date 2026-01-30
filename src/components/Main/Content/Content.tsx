@@ -17,7 +17,7 @@ import {
 export interface ContentProps {
     content: string;
 }
-const Content: React.FC<ContentProps> = (props) => {
+const Content = (props: ContentProps) => {
     const [searchParams] = useSearchParams();
     const search = searchParams.get('search');
     const location = useLocation();

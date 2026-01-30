@@ -1,25 +1,20 @@
-
 ![Снимок экрана (1052)](https://github.com/mynameisedward/anime-search-app/assets/145203214/d5956345-1482-4009-ae5f-f8635b5e8e5c)
 
 ### О проекте
 
 Anime Search App это сервис для просмотра информации об аниме или манге.
 
-
 [Просмотр приложения](https://mynameisedwad.github.io/anime-search-app)
-
 
 [Jikan Rest API](https://docs.api.jikan.moe/#section/Information) фигурирует как база данных с информацией о аниме или манги
 
-[Дизайн](https://www.figma.com/file/Uw58rYWDpUS3GHUkehuyd5/Anime-DB-(Community)?type=design&node-id=0-1&mode=design&t=kElP5rsGFx9TEODG-0) я взял отсюда 
-
+[Дизайн](<https://www.figma.com/file/Uw58rYWDpUS3GHUkehuyd5/Anime-DB-(Community)?type=design&node-id=0-1&mode=design&t=kElP5rsGFx9TEODG-0>) я взял отсюда
 
 ### Стек технологий
 
 - React.js
-- react-router-dom (для маршрутизации)    
+- react-router-dom (для маршрутизации)
 - CSS-модули
-
 
 #### Как скачать проект
 
@@ -28,8 +23,8 @@ Anime Search App это сервис для просмотра информац�
 3. Установите зависимости yarn install
 4. Запустите проект yarn start
 
-
 ### Разработка
+
     DONE:
     • preloader при загрузке контента (ЕСТЬ, но с багами)
     • кастомный скролл (ЕСТЬ)
@@ -43,11 +38,11 @@ Anime Search App это сервис для просмотра информац�
     • сделать error когда ошибка при запросе данных (ЕСТЬ)
     • сделать ютуб плеер с видео (ЕСТЬ)
     • добавить иконку лупы когда input focus (ЕСТЬ)
+    • переписать всё на typescript (СДЕЛАНО)
 
 
 
     IN PROCESS:
-        • переписать всё на typescript (В РАЗРАБОТКЕ)
 
     TODO:
         • Добавить оценку к тайтлу
@@ -56,14 +51,14 @@ Anime Search App это сервис для просмотра информац�
         • пофиксить баг с высотой карточки
         • нажимать на название жанра и будут открываться аниме или манга с этим жанром
         • обновить Favicon сайта
-        • сделать кастомный хук для загрузки данных в 
+        • сделать кастомный хук для загрузки данных в
         • сделать начальную страницу как на movie-tracker
         • сделать классный background
-        
 
-        
-    Баги:        
+
+
+    Баги:
         /anime-search-app/anime-search-app/something
-        
+
     НА ПОДУМАТЬ:
         • Скелетон вместо preloader-кота

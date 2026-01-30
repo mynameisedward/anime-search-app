@@ -8,7 +8,7 @@ import arrowIcon from '../../assets/arrow.svg';
 import { ItemPageType } from './types';
 
 const ItemPage = () => {
-    const [item, setItem] = useState<ItemPageType>(null);
+    const [item, setItem] = useState<ItemPageType | null>(null);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();

@@ -4,14 +4,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import searchIcon from './magnifier.svg';
 
 const Header = () => {
-    const [inputValue, setInputValue] = useState<string>('');
+    const [inputValue, setInputValue] = useState('');
     const navigate = useNavigate();
 
     const location = useLocation();
-    const [activeLink, setActiveLink] = useState<string>('');
+    const [activeLink, setActiveLink] = useState('');
 
-    const [inputOpen, setInputOpen] = useState<boolean>(false);
-    const [inputFocus, setInputFocus] = useState<boolean>(false);
+    const [inputOpen, setInputOpen] = useState(false);
+    const [inputFocus, setInputFocus] = useState(false);
 
     const setLink = (): void => {
         const currentUrl: string = location.pathname;
@@ -67,7 +67,7 @@ const Header = () => {
                             placeholder="What are you looking for?"
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
-                            onKeyPress={handleInput}
+                            onKeyDown={handleInput}
                             onFocus={() => setInputFocus(true)}
                             onBlur={() => setInputFocus(false)}
                         />

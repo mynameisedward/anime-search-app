@@ -24,10 +24,10 @@ const Content = (props: ContentProps) => {
     const page = searchParams.get('page');
 
     const [items, setItems] = useState<ItemArrInterface[]>([]);
-    const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
+    const [isCardOpen, setIsCardOpen] = useState(false);
     const [item, setItem] = useState<ItemInterface | null>(null);
-    const [loading, setLoading] = useState<boolean>(true); // Глобальный loading для всей страницы
-    const [loadingInsideCard, setLoadingInsideCard] = useState<boolean>(false); // Loading для карточки
+    const [loading, setLoading] = useState(true); // Глобальный loading для всей страницы
+    const [loadingInsideCard, setLoadingInsideCard] = useState(false); // Loading для карточки
     const [paginationData, setPaginationData] = useState<PaginationData>({
         last_visible_page: 1,
         current_page: 1,

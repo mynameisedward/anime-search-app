@@ -16,12 +16,19 @@ Anime Search App это сервис для просмотра информац�
 - react-router-dom (для маршрутизации)
 - CSS-модули
 
-#### Как скачать проект
+### Запуск проекта
 
-1. Скачайте node.js на ваш компьютер
-2. Клонируйте репозиторий https://github.com/mynameisedward/anime-search-app.git
-3. Установите зависимости yarn install
-4. Запустите проект yarn start
+#### Требования
+
+- [Node.js (20+)](https://nodejs.org/en/)
+- [yarn](https://yarnpkg.com/)
+
+
+#### Запуск проекта
+
+1. Клонируйте репозиторий `git clone https://github.com/mynameisedward/anime-search-app.git`
+2. Установите зависимости `yarn install`
+3. Запустите проект `yarn start`
 
 ### Разработка
 

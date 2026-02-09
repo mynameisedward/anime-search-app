@@ -5,26 +5,24 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import ItemPage from '../ItemPage/ItemPage';
 
 const Main = () => {
-    return (
-        <main className={s.Main}>
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <div className={s.container}>
-                            <h1 className={s.title}>
-                                Выберите аниме или мангу!
-                            </h1>
-                        </div>
-                    }
-                />
-                <Route path="/anime" element={<Content content="anime" />} />
-                <Route path="/anime/:id" element={<ItemPage />} />
-                <Route path="/manga" element={<Content content="manga" />} />
-                <Route path="/manga/:id" element={<ItemPage />} />
-            </Routes>
-        </main>
-    );
+  return (
+    <main className={s.Main}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className={s.container}>
+              <h1 className={s.title}>Выберите аниме или мангу!</h1>
+            </div>
+          }
+        />
+        <Route path="/anime" element={<Content content="anime" />} />
+        <Route path="/anime/:id" element={<ItemPage />} />
+        <Route path="/manga" element={<Content content="manga" />} />
+        <Route path="/manga/:id" element={<ItemPage />} />
+      </Routes>
+    </main>
+  );
 };
 
 export default Main;

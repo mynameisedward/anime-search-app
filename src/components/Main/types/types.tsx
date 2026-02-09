@@ -15,6 +15,7 @@ export interface ItemInterface {
 }
 
 export interface ItemArrInterface {
+  score: number;
   mal_id: number;
   images: {
     webp: {

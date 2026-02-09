@@ -46,6 +46,7 @@ const Content = (props: ContentProps) => {
     const response = await axios.get(url);
     setItems(response.data.data);
     setPaginationData(response.data.pagination);
+    console.log(response.data.data);
   };
 
   const changePage = (number: number): void => {
@@ -118,7 +119,10 @@ const Content = (props: ContentProps) => {
                     )
                   }
                 >
-                  <Item imageUrl={item.images.webp.image_url} />
+                  <Item
+                    score={item.score}
+                    imageUrl={item.images.webp.image_url}
+                  />
                 </button>
               ))}
             </div>

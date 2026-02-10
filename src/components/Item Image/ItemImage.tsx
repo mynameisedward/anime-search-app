@@ -6,7 +6,7 @@ interface ItemProps {
   score: number;
 }
 
-const Item = (props: ItemProps) => {
+const ItemImage = (props: ItemProps) => {
   return (
     <div className={s.item}>
       {/* TODO: ЕСЛИ Оценки нету, то ставим серый 0, иначе если 6 и ниже то красная */}
@@ -16,4 +16,4 @@ const Item = (props: ItemProps) => {
   );
 };
 
-export default Item;
+export default ItemImage;

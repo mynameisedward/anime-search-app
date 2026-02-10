@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import s from './ItemCard.module.css';
+import s from './ItemCard_MoreInfo.module.css';
 import closeButton from './closeButtonIcon.svg';
 import { Link } from 'react-router-dom';
-import { Genre } from '../types/types';
+import { Genre } from '../../types/types';
 
 export interface ItemCardProps {
   imageUrl: string;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import s from './Content.module.css';
-import Item from '../../components/Main/Item/Item';
-import ItemCard from '../../components/Main/ItemCard/ItemCard';
+import ItemImage from '../../components/Item Image/ItemImage';
+import ItemCard from '../../components/Item More Info Card/ItemCard_MoreInfo';
 import axios from 'axios';
 import Preloader from '../../components/Preloader/Preloader';
 import { useSearchParams, useLocation } from 'react-router-dom';
@@ -12,7 +12,7 @@ import {
   ItemInterface,
   PaginationData,
   Genre,
-} from '../../components/Main/types/types';
+} from '../../types/types';
 
 export interface ContentProps {
   content: string;
@@ -119,7 +119,7 @@ const Content = (props: ContentProps) => {
                     )
                   }
                 >
-                  <Item
+                  <ItemImage
                     score={item.score}
                     imageUrl={item.images.webp.image_url}
                   />

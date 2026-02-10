@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import s from './ItemPage.module.css';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import Preloader from '../Preloader/Preloader';
+import Preloader from '../../components/Preloader/Preloader';
 import YouTube from 'react-youtube';
 import arrowIcon from '../../assets/arrow.svg';
 import { ItemPageType } from './types';

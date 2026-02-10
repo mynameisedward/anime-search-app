@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './Paginator.module.css';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 

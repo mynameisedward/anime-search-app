@@ -1,7 +1,7 @@
 import s from './Main.module.css';
-import Content from '../../components/Main/Content/Content';
+import Content from '../../pages/Content/Content';
 import { Route, Routes } from 'react-router-dom';
-import ItemPage from '../../components/ItemPage/ItemPage';
+import ItemPage from '../../pages/ItemPage/ItemPage';
 
 const Main = () => {
   return (

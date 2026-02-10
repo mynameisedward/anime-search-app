@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import s from './Content.module.css';
-import Item from '../Item/Item';
-import ItemCard from '../ItemCard/ItemCard';
+import Item from '../../components/Main/Item/Item';
+import ItemCard from '../../components/Main/ItemCard/ItemCard';
 import axios from 'axios';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../components/Preloader/Preloader';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import Paginator from '../../Paginator/Paginator';
+import Paginator from '../../components/Paginator/Paginator';
 import getUrlForRequest from './getUrlForRequest';
 import {
   ItemArrInterface,
   ItemInterface,
   PaginationData,
   Genre,
-} from '../types/types';
+} from '../../components/Main/types/types';
 
 export interface ContentProps {
   content: string;

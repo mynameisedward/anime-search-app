@@ -28,16 +28,7 @@
 
 
 
-.items {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-.item {
-    
-}
+
 @media (max-width: 1600px) {
     .container {
         max-width: 1400px;

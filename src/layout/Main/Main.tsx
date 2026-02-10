@@ -1,8 +1,7 @@
-import React from 'react';
 import s from './Main.module.css';
-import Content from './Content/Content';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import ItemPage from '../ItemPage/ItemPage';
+import Content from '../../components/Main/Content/Content';
+import { Route, Routes } from 'react-router-dom';
+import ItemPage from '../../components/ItemPage/ItemPage';
 
 const Main = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import s from './Header.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import searchIcon from './magnifier.svg';
+import searchIcon from '../../assets/Header/magnifier.svg';
 
 const Header = () => {
   const [inputValue, setInputValue] = useState('');

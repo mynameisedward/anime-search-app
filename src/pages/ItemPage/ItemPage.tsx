@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Preloader from '../../components/Preloader/Preloader';
 import YouTube from 'react-youtube';
-import arrowIcon from '../../assets/arrow.svg';
+import arrowIcon from '../../assets/images/ItemPage/arrow.svg';
 import { ItemPageType } from './types';
 
 const ItemPage = () => {

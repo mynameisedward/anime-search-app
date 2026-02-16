@@ -1,5 +1,5 @@
 import s from './ItemCard_MoreInfo.module.scss';
-import closeButton from '../../assets/Item More Info Card/closeButtonIcon.svg';
+import closeButton from '../../assets/images/Item More Info Card/closeButtonIcon.svg';
 import { Link } from 'react-router-dom';
 import { Genre } from '../../types/types';
 

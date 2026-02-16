@@ -6,7 +6,7 @@ import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
 
 const Main = () => {
   return (
-    <main className={s.Main}>
+    <main className={s.main}>
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/anime" element={<Content content="anime" />} />

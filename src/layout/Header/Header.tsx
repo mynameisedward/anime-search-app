@@ -47,7 +47,7 @@ const Header = () => {
   }, [location]);
 
   return (
-    <header className={s.Header}>
+    <header className={s.header}>
       <div className={s.container}>
         <Link to={'/'}>
           <h1 className={s.logo}>Anime Search App</h1>

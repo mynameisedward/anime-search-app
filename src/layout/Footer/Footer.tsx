@@ -3,7 +3,7 @@ import s from './Footer.module.css';
 
 const Footer = () => {
   return (
-    <footer className={s.Footer}>
+    <footer className={s.footer}>
       <div className={s.container}>
         <div className={s.contact}>
           <h3 className={s.firstWord}>Created by:</h3>

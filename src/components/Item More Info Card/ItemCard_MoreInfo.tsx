@@ -14,7 +14,7 @@ export interface ItemCardProps {
 
 const ItemCard = (props: ItemCardProps) => {
   return (
-    <div className={s.ItemCard}>
+    <div className={s.item_card}>
       <img src={props.imageUrl} alt="" className={s.image} />
       <h2 className={s.title}>{props.title}</h2>
       <h2 className={s.genres}>

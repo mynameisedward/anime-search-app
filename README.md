@@ -14,7 +14,7 @@ Anime Search App это сервис для просмотра информац�
 
 - React.js
 - react-router-dom (для маршрутизации)
-- CSS-модули
+- SCSS-модули
 
 ### Запуск проекта
 
@@ -27,4 +27,4 @@ Anime Search App это сервис для просмотра информац�
 
 1. Клонируйте репозиторий `git clone https://github.com/mynameisedward/anime-search-app.git`
 2. Установите зависимости `yarn install`
-3. Запустите проект `yarn start`
+3. Запустите проект `yarn dev`

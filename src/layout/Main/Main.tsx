@@ -1,4 +1,4 @@
-import s from './Main.module.css';
+import s from './Main.module.scss';
 import Content from '../../pages/Content/Content';
 import { Route, Routes } from 'react-router-dom';
 import ItemPage from '../../pages/ItemPage/ItemPage';

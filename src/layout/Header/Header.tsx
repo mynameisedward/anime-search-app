@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import s from './Header.module.css';
+import s from './Header.module.scss';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import searchIcon from '../../assets/Header/magnifier.svg';
 

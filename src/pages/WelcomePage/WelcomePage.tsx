@@ -1,4 +1,4 @@
-import s from './WelcomePage.module.css';
+import s from './WelcomePage.module.scss';
 
 export const WelcomePage = () => {
   return (

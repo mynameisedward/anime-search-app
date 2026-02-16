@@ -1,4 +1,4 @@
-import s from './Paginator.module.css';
+import s from './Paginator.module.scss';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 export interface PaginatorProps {

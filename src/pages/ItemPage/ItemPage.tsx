@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import s from './ItemPage.module.css';
+import s from './ItemPage.module.scss';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Preloader from '../../components/Preloader/Preloader';

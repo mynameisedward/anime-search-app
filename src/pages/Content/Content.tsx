@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import s from './Content.module.css';
+import s from './Content.module.scss';
 import ItemImage from '../../components/Item Image/ItemImage';
 import ItemCard from '../../components/Item More Info Card/ItemCard_MoreInfo';
 import axios from 'axios';

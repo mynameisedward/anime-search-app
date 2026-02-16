@@ -31,8 +31,8 @@
     "include": [
       "src",
       "src/**/*",
-      // "global.d.ts",
-      // "vite.config.ts"
+      "global.d.ts",
+      "vite.config.ts"
     ]
   }
   

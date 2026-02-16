@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import s from './Content.module.scss';
-import ItemImage from '../../components/Item Image/ItemImage';
-import ItemCard from '../../components/Item More Info Card/ItemCard_MoreInfo';
+import { ItemImage } from '../../components/Item Image/ItemImage';
+import { ItemCard } from '../../components/Item More Info Card/ItemCard_MoreInfo';
 import axios from 'axios';
-import Preloader from '../../components/Preloader/Preloader';
+import { Preloader } from '../../components/Preloader/Preloader';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import Paginator from '../../components/Paginator/Paginator';
-import getUrlForRequest from './getUrlForRequest';
+import { Paginator } from '../../components/Paginator/Paginator';
+import { getUrlForRequest } from './getUrlForRequest';
 import {
   ItemArrInterface,
   ItemInterface,
@@ -17,7 +17,7 @@ import {
 export interface ContentProps {
   content: string;
 }
-const Content = (props: ContentProps) => {
+export const Content = (props: ContentProps) => {
   const [searchParams] = useSearchParams();
   const search = searchParams.get('search');
   const location = useLocation();
@@ -146,5 +146,3 @@ const Content = (props: ContentProps) => {
     </>
   );
 };
-
-export default Content;

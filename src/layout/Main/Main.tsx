@@ -1,10 +1,10 @@
 import s from './Main.module.scss';
-import Content from '../../pages/Content/Content';
+import { Content } from '../../pages/Content/Content';
 import { Route, Routes } from 'react-router-dom';
-import ItemPage from '../../pages/ItemPage/ItemPage';
+import { ItemPage } from '../../pages/ItemPage/ItemPage';
 import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
 
-const Main = () => {
+export const Main = () => {
   return (
     <main className={s.main}>
       <Routes>
@@ -17,5 +17,3 @@ const Main = () => {
     </main>
   );
 };
-
-export default Main;

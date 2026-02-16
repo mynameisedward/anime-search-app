@@ -1,9 +1,9 @@
-import Footer from './layout/Footer/Footer';
-import Header from './layout/Header/Header';
-import Main from './layout/Main/Main';
+import { Footer } from './layout/Footer/Footer';
+import { Header } from './layout/Header/Header';
+import { Main } from './layout/Main/Main';
 import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+export const App = () => {
   return (
     <div className="app">
       <BrowserRouter>
@@ -13,6 +13,4 @@ function App() {
       </BrowserRouter>
     </div>
   );
-}
-
-export default App;
+};

@@ -6,7 +6,7 @@ export interface PaginatorProps {
   changePage: (number: number) => void;
 }
 
-const Paginator = (props: PaginatorProps) => {
+export const Paginator = (props: PaginatorProps) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   let page: string | number | null = searchParams.get('page');
@@ -50,5 +50,3 @@ const Paginator = (props: PaginatorProps) => {
     </div>
   );
 };
-
-export default Paginator;

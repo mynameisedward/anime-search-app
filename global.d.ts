@@ -2,7 +2,7 @@ declare module 'vite-plugin-eslint';
 
 // Обычные scss-файлы
 declare module '*.scss' {
-  const content: Record<string, string>;
+  export const content: Record<string, string>;
   export default content;
 }
 

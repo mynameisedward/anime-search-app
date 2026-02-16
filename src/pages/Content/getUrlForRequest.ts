@@ -4,7 +4,7 @@ type funcParams = {
   page: string | null;
 };
 
-function getUrlForRequest(params: funcParams): string {
+export const getUrlForRequest = (params: funcParams): string => {
   const { content, search, page } = params;
   let baseUrl = 'https://api.jikan.moe/v4/';
 
@@ -44,6 +44,4 @@ function getUrlForRequest(params: funcParams): string {
   url.search = searchParams.toString();
 
   return url.href;
-}
-
-export default getUrlForRequest;
+};

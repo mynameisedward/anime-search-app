@@ -1,7 +1,7 @@
 import s from './Preloader.module.scss';
 import PreloaderGif from '../../assets/images/Preloader/Preloader.gif';
 
-const Preloader = () => {
+export const Preloader = () => {
   return (
     <div className={s.preloader}>
       <img src={PreloaderGif} alt="" className={s.preloaderGif} />
@@ -9,5 +9,3 @@ const Preloader = () => {
     </div>
   );
 };
-
-export default Preloader;

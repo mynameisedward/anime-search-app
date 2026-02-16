@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import s from './ItemPage.module.scss';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import Preloader from '../../components/Preloader/Preloader';
+import { Preloader } from '../../components/Preloader/Preloader';
 import YouTube from 'react-youtube';
 import arrowIcon from '../../assets/images/ItemPage/arrow.svg';
 import { ItemPageType } from './types';
 
-const ItemPage = () => {
+export const ItemPage = () => {
   const [item, setItem] = useState<ItemPageType | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -204,5 +204,3 @@ const ItemPage = () => {
     </div>
   );
 };
-
-export default ItemPage;

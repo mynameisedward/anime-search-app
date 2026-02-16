@@ -12,7 +12,7 @@ export interface ItemCardProps {
   setCardOpen: (trueFalse: boolean) => void;
 }
 
-const ItemCard = (props: ItemCardProps) => {
+export const ItemCard = (props: ItemCardProps) => {
   return (
     <div className={s.item_card}>
       <img src={props.imageUrl} alt="" className={s.image} />
@@ -38,5 +38,3 @@ const ItemCard = (props: ItemCardProps) => {
     </div>
   );
 };
-
-export default ItemCard;

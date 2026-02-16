@@ -3,7 +3,7 @@ import s from './Header.module.scss';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import searchIcon from '../../assets/images/Header/magnifier.svg';
 
-const Header = () => {
+export const Header = () => {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
 
@@ -87,5 +87,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;
